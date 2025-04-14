@@ -33,8 +33,3 @@ jobs:
       with:
         name: pytest-report
         path: report.html
-
-    - name: Send alert if tests fail
-      if: failure()
-      run: |
-        echo "::error ::Tests failed. You can view the HTML report in the workflow artifacts."
