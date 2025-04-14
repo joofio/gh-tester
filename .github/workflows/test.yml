@@ -29,6 +29,7 @@ jobs:
         pytest .
 
     - name: Upload report as artifact
+      if: always()  # ensures this runs even if previous steps failed
       uses: actions/upload-artifact@v4
       with:
         name: pytest-report
