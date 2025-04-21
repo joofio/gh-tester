@@ -182,8 +182,7 @@ def get_bundles_raw(list):
 
 
 @pytest.mark.dependency()
-@pytest.fixture(scope="session")
-def check_environment():
+def test_environment():
     url = "https://gravitate-health.lst.tfo.upm.es/epi/api/fhir/Bundle/"
 
     try:
@@ -194,10 +193,7 @@ def check_environment():
 
     if response:
         data = response.json()
-        if data["total"] == 0:
-            pytest.skip(
-                "❌ Skipping all tests: environment check failed → No bundles in the server"
-            )
+        assert data["total"] > 0
 
 
 @pytest.mark.parametrize("persona", PATIENT_IDS)
