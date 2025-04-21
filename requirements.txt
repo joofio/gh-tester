@@ -2,3 +2,4 @@ fhirpathpy
 requests
 pytest
 pytest-html
+pytest-dependency

@@ -181,6 +181,25 @@ def get_bundles_raw(list):
     return bundles_raw
 
 
+@pytest.mark.dependency()
+@pytest.fixture(scope="session")
+def check_environment():
+    url = "https://gravitate-health.lst.tfo.upm.es/epi/api/fhir/Bundle/"
+
+    try:
+        response = requests.get(url, timeout=5)
+        response.raise_for_status()
+    except Exception as e:
+        pytest.skip(f"❌ Skipping all tests: environment check failed → {e}")
+
+    if response:
+        data = response.json()
+        if data["total"] == 0:
+            pytest.skip(
+                "❌ Skipping all tests: environment check failed → No bundles in the server"
+            )
+
+
 @pytest.mark.parametrize("persona", PATIENT_IDS)
 @pytest.mark.parametrize("base_url", BASE_URL)
 def test_ips_identifier_and_check_medication(persona, base_url):
@@ -208,6 +227,75 @@ def test_ips_identifier_and_check_medication(persona, base_url):
     assert len(medication) > 0, f"No medication data found for persona {persona}"
 
 
+@pytest.mark.dependency(depends=["check_environment"])
+@pytest.mark.parametrize("bundles", BUNDLES)
+@pytest.mark.parametrize("patient_ids", PATIENT_IDS)
+@pytest.mark.parametrize("base_url", BASE_URL)
+def test_all_preprocess_data(bundles, patient_ids, base_url):
+    WEBSITE_URL = (
+        base_url
+        + "focusing/focus/"
+        + bundles["id"]
+        + "?preprocessors=preprocessing-service-mvp2&preprocessors=preprocessing-service-manual&patientIdentifier="
+        + patient_ids
+    )
+    print(WEBSITE_URL)
+    # WEBSITE_URL = WEBSITE_DATA["url"]
+    #  WEBSITE_DESC = WEBSITE_DATA["desc"]
+    # print(WEBSITE_URL)
+    bundleresp = requests.post(WEBSITE_URL)
+
+    assert bundleresp.status_code == 200
+
+    warnings = eval(bundleresp.headers.get("gh-focusing-warnings", "{}"))
+    value = evaluate_result(bundleresp.status_code, warnings)
+
+    # ✅ Core assertion
+    assert value in [0]
+
+
+@pytest.mark.dependency(depends=["check_environment"])
+@pytest.mark.parametrize("bundles", BUNDLES)
+@pytest.mark.parametrize("patient_ids", PATIENT_IDS)
+@pytest.mark.parametrize("base_url", BASE_URL)
+def test_all_prpcessor_with_post_data(bundles, patient_ids, base_url):
+    # print(base_url, patient_ids, bundles)
+    bundleresp = requests.get(base_url + "epi/api/fhir/Bundle/" + bundles["id"])
+    bundle = bundleresp.json()
+    patresp_body = {
+        "resourceType": "Parameters",
+        "id": "example",
+        "parameter": [
+            {"name": "identifier", "valueIdentifier": {"value": patient_ids}}
+        ],
+    }
+    # print(patresp_body)
+    patresp = requests.post(
+        base_url + "ips/api/fhir/Patient/$summary", json=patresp_body
+    )
+    assert patresp.status_code == 200
+
+    ips = patresp.json()
+    #  print(ips)
+    body = {"epi": bundle, "ips": ips}
+    WEBSITE_URL = (
+        base_url
+        + "focusing/focus?preprocessors=preprocessing-service-mvp2&preprocessors=preprocessing-service-manual"
+    )
+    print(WEBSITE_URL)
+
+    focusresp = requests.post(WEBSITE_URL, json=body)
+    assert focusresp.status_code == 200
+
+    warnings = eval(focusresp.headers.get("gh-focusing-warnings", "{}"))
+    value = evaluate_result(focusresp.status_code, warnings)
+
+    # ✅ Core assertion
+    assert value in [0]
+    # status_code, warnings = check_website_status(WEBSITE_URL, body)
+
+
+@pytest.mark.dependency(depends=["check_environment"])
 @pytest.mark.parametrize("base_url", BASE_URL)
 def test_check_bundles_in_list(base_url):
     all_checked = []
@@ -266,45 +354,7 @@ def test_check_bundles_in_list(base_url):
 # 2025-01-16T09:44:37.410Z  INFO 1 --- [nio-8080-exec-4] fhirtest.access                          : Path[/fhir] Source[] Operation[search-type  List] UA[Dart/3.5 (dart:io)] Params[?subject.identifier=39.955] ResponseEncoding[JSON] Operation[search-type  List] UA[Dart/3.5 (dart:io)] Params[?subject.identifier=39.955] ResponseEncoding[JSON]
 
 
-@pytest.mark.parametrize("bundles", BUNDLES)
-@pytest.mark.parametrize("patient_ids", PATIENT_IDS)
-@pytest.mark.parametrize("base_url", BASE_URL)
-def test_all_prpcessor_with_post_data(bundles, patient_ids, base_url):
-    print(base_url, patient_ids, bundles)
-    bundleresp = requests.get(base_url + "epi/api/fhir/Bundle/" + bundles["id"])
-    bundle = bundleresp.json()
-    patresp_body = {
-        "resourceType": "Parameters",
-        "id": "example",
-        "parameter": [
-            {"name": "identifier", "valueIdentifier": {"value": patient_ids}}
-        ],
-    }
-    print(patresp_body)
-    patresp = requests.post(
-        base_url + "ips/api/fhir/Patient/$summary", json=patresp_body
-    )
-    assert patresp.status_code == 200
-
-    ips = patresp.json()
-    #  print(ips)
-    body = {"epi": bundle, "ips": ips}
-    WEBSITE_URL = (
-        base_url
-        + "focusing/focus?preprocessors=preprocessing-service-mvp2&preprocessors=preprocessing-service-manual"
-    )
-
-    focusresp = requests.post(WEBSITE_URL, json=body)
-    assert focusresp.status_code == 200
-
-    warnings = eval(focusresp.headers.get("gh-focusing-warnings", "{}"))
-    value = evaluate_result(focusresp.status_code, warnings)
-
-    # ✅ Core assertion
-    assert value in [0]
-    # status_code, warnings = check_website_status(WEBSITE_URL, body)
-
-
+@pytest.mark.dependency(depends=["check_environment"])
 @pytest.mark.parametrize("bundles", BUNDLES)
 @pytest.mark.parametrize("patient_ids", PATIENT_IDS)
 @pytest.mark.parametrize("lenses", LENSES)
@@ -326,7 +376,7 @@ def test_lenses_foralreadypreprocess_data(bundles, lenses, patient_ids, base_url
     #  WEBSITE_DESC = WEBSITE_DATA["desc"]
     # status_code, warnings = check_website_status(WEBSITE_URL)
     assert bundleresp.status_code == 200
-
+    #
     warnings = eval(bundleresp.headers.get("gh-focusing-warnings", "{}"))
     value = evaluate_result(bundleresp.status_code, warnings)
 
@@ -334,6 +384,7 @@ def test_lenses_foralreadypreprocess_data(bundles, lenses, patient_ids, base_url
     assert value in [0]
 
 
+@pytest.mark.dependency(depends=["check_environment"])
 @pytest.mark.parametrize("bundles", BUNDLES)
 @pytest.mark.parametrize("patient_ids", PATIENT_IDS)
 @pytest.mark.parametrize("base_url", BASE_URL)
@@ -345,32 +396,6 @@ def test_all_lenses_data(bundles, patient_ids, base_url):
         + "?preprocessors=preprocessing-service-manual&patientIdentifier="
         + patient_ids
     )
-    print(WEBSITE_URL)
-    bundleresp = requests.post(WEBSITE_URL)
-
-    assert bundleresp.status_code == 200
-
-    warnings = eval(bundleresp.headers.get("gh-focusing-warnings", "{}"))
-    value = evaluate_result(bundleresp.status_code, warnings)
-
-    # ✅ Core assertion
-    assert value in [0]
-
-
-@pytest.mark.parametrize("bundles", BUNDLES)
-@pytest.mark.parametrize("patient_ids", PATIENT_IDS)
-@pytest.mark.parametrize("base_url", BASE_URL)
-def test_all_preprocess_data(bundles, patient_ids, base_url):
-    WEBSITE_URL = (
-        base_url
-        + "focusing/focus/"
-        + bundles["id"]
-        + "?preprocessors=preprocessing-service-mvp2&preprocessors=preprocessing-service-manual&patientIdentifier="
-        + patient_ids
-    )
-    print(WEBSITE_URL)
-    # WEBSITE_URL = WEBSITE_DATA["url"]
-    #  WEBSITE_DESC = WEBSITE_DATA["desc"]
     print(WEBSITE_URL)
     bundleresp = requests.post(WEBSITE_URL)
 
