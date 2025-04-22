@@ -119,7 +119,7 @@ ENHANCED_WHITE_LIST = [
     "enhancedbundlekarveaP",
 ]
 
-BASE_URL = ["https://gravitate-health.lst.tfo.upm.es/"]
+base_url = "https://gravitate-health.lst.tfo.upm.es/"
 
 
 # Reusable evaluation logic (from log_result)
@@ -197,7 +197,6 @@ def test_environment():
 
 
 @pytest.mark.parametrize("persona", PATIENT_IDS)
-@pytest.mark.parametrize("base_url", BASE_URL)
 def test_ips_identifier_and_check_medication(persona, base_url):
     """Test API responses for multiple endpoints."""
 
@@ -226,7 +225,6 @@ def test_ips_identifier_and_check_medication(persona, base_url):
 @pytest.mark.dependency(depends=["check_environment"])
 @pytest.mark.parametrize("bundles", BUNDLES)
 @pytest.mark.parametrize("patient_ids", PATIENT_IDS)
-@pytest.mark.parametrize("base_url", BASE_URL)
 def test_all_preprocess_data(bundles, patient_ids, base_url):
     WEBSITE_URL = (
         base_url
@@ -253,7 +251,6 @@ def test_all_preprocess_data(bundles, patient_ids, base_url):
 @pytest.mark.dependency(depends=["check_environment"])
 @pytest.mark.parametrize("bundles", BUNDLES)
 @pytest.mark.parametrize("patient_ids", PATIENT_IDS)
-@pytest.mark.parametrize("base_url", BASE_URL)
 def test_all_prpcessor_with_post_data(bundles, patient_ids, base_url):
     # print(base_url, patient_ids, bundles)
     bundleresp = requests.get(base_url + "epi/api/fhir/Bundle/" + bundles["id"])
@@ -292,7 +289,6 @@ def test_all_prpcessor_with_post_data(bundles, patient_ids, base_url):
 
 
 @pytest.mark.dependency(depends=["check_environment"])
-@pytest.mark.parametrize("base_url", BASE_URL)
 def test_check_bundles_in_list(base_url):
     all_checked = []
     list_member_found = []
@@ -354,7 +350,6 @@ def test_check_bundles_in_list(base_url):
 @pytest.mark.parametrize("bundles", BUNDLES)
 @pytest.mark.parametrize("patient_ids", PATIENT_IDS)
 @pytest.mark.parametrize("lenses", LENSES)
-@pytest.mark.parametrize("base_url", BASE_URL)
 def test_lenses_foralreadypreprocess_data(bundles, lenses, patient_ids, base_url):
     WEBSITE_URL = (
         base_url
@@ -383,7 +378,6 @@ def test_lenses_foralreadypreprocess_data(bundles, lenses, patient_ids, base_url
 @pytest.mark.dependency(depends=["check_environment"])
 @pytest.mark.parametrize("bundles", BUNDLES)
 @pytest.mark.parametrize("patient_ids", PATIENT_IDS)
-@pytest.mark.parametrize("base_url", BASE_URL)
 def test_all_lenses_data(bundles, patient_ids, base_url):
     WEBSITE_URL = (
         base_url
