@@ -23,7 +23,7 @@ def test_environment(base_url):
 
     if response:
         data = response.json()
-        assert data["total"] > 0
+        assert len(data["entry"]) > 0
 
 
 @pytest.mark.parametrize("persona", PATIENT_IDS)
