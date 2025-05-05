@@ -52,7 +52,7 @@ def test_ips_identifier_and_check_medication(persona, base_url):
     assert len(medication) > 0, f"No medication data found for persona {persona}"
 
 
-@pytest.mark.dependency(depends=["check_environment"])
+@pytest.mark.dependency(depends=["test_environment"])
 @pytest.mark.parametrize("bundles", BUNDLES)
 @pytest.mark.parametrize("patient_ids", PATIENT_IDS)
 def test_all_preprocess_data(bundles, patient_ids, base_url):
@@ -78,7 +78,7 @@ def test_all_preprocess_data(bundles, patient_ids, base_url):
     assert value in [0]
 
 
-@pytest.mark.dependency(depends=["check_environment"])
+@pytest.mark.dependency(depends=["test_environment"])
 @pytest.mark.parametrize("bundles", BUNDLES)
 @pytest.mark.parametrize("patient_ids", PATIENT_IDS)
 def test_all_prpcessor_with_post_data(bundles, patient_ids, base_url):
@@ -118,7 +118,7 @@ def test_all_prpcessor_with_post_data(bundles, patient_ids, base_url):
     # status_code, warnings = check_website_status(WEBSITE_URL, body)
 
 
-@pytest.mark.dependency(depends=["check_environment"])
+@pytest.mark.dependency(depends=["test_environment"])
 def test_check_bundles_in_list(base_url):
     all_checked = []
     list_member_found = []
@@ -176,7 +176,7 @@ def test_check_bundles_in_list(base_url):
 # 2025-01-16T09:44:37.410Z  INFO 1 --- [nio-8080-exec-4] fhirtest.access                          : Path[/fhir] Source[] Operation[search-type  List] UA[Dart/3.5 (dart:io)] Params[?subject.identifier=39.955] ResponseEncoding[JSON] Operation[search-type  List] UA[Dart/3.5 (dart:io)] Params[?subject.identifier=39.955] ResponseEncoding[JSON]
 
 
-@pytest.mark.dependency(depends=["check_environment"])
+@pytest.mark.dependency(depends=["test_environment"])
 @pytest.mark.parametrize("bundles", BUNDLES)
 @pytest.mark.parametrize("patient_ids", PATIENT_IDS)
 @pytest.mark.parametrize("lenses", LENSES)
@@ -205,7 +205,7 @@ def test_lenses_foralreadypreprocess_data(bundles, lenses, patient_ids, base_url
     assert value in [0]
 
 
-@pytest.mark.dependency(depends=["check_environment"])
+@pytest.mark.dependency(depends=["test_environment"])
 @pytest.mark.parametrize("bundles", BUNDLES)
 @pytest.mark.parametrize("patient_ids", PATIENT_IDS)
 def test_all_lenses_data(bundles, patient_ids, base_url):
