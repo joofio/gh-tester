@@ -238,10 +238,8 @@ TEST_CASE_IDS = ["1", "2"]  # You can expand this list as needed
 
 
 @pytest.mark.dependency(depends=["test_environment", "test_if_lens_exist"])
-@pytest.mark.parametrize("lenses", LENSES)
-@pytest.mark.parametrize("patient_ids", PATIENT_IDS)
 @pytest.mark.parametrize("load_local_data", TEST_CASE_IDS, indirect=True)
-def test_all_lenses_with_context(load_local_data, lenses, base_url):
+def test_all_lenses_with_context(load_local_data, base_url):
     WEBSITE_URL = base_url + "focusing/focus?preprocessors=preprocessing-service-manual"
     print(WEBSITE_URL)
     ips, epi = load_local_data()
