@@ -1,3 +1,6 @@
+import json
+import os
+
 import pytest
 from fhirpathpy import evaluate
 
@@ -133,6 +136,17 @@ ENHANCED_WHITE_LIST = [
     "enhanced-bundleflucelvax-pedro",
     "enhanced-bundlehypericum-pedro",
     "enhancedbundlekarveaP",
+    "pedro-dimension-collection",
+    "persona-dimension-collection",
+    "bundlepackageleafletxyntha",
+    "bundlepackageleaflet-xeljanz",
+    "bundlejpiherceptin150",
+    "bundlejpisimvastatin20",
+    "bundlejpicarbamazepine200",
+    "bundleproductmonographxyntha",
+    "bundle-ibrance75-100-125",
+    "bundlepackageleaflet-379d610f9c96d541562699215b0864127",
+    "bundlepackageleaflet-378d610f9c96d541562699215b0864126",
 ]
 
 
@@ -193,3 +207,17 @@ def get_bundles_raw(list):
     bundles_raw = evaluate(list, "List.entry.where(flag.coding[0].code=='01')", [])
     # print(bundles_raw)
     return bundles_raw
+
+
+@pytest.fixture
+def load_local_data():
+    def _load(patient_id, lens):
+        # Construct file path
+        filename = f"{patient_id}_{lens}.json"
+        filepath = os.path.join(os.path.dirname(__file__), "data", filename)
+
+        # Load the JSON content
+        with open(filepath, "r", encoding="utf-8") as f:
+            return json.load(f)
+
+    return _load

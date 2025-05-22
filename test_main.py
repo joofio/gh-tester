@@ -53,6 +53,12 @@ def test_ips_identifier_and_check_medication(persona, base_url):
 
 
 @pytest.mark.dependency(depends=["test_environment"])
+def test_if_lens_exist(base_url):
+    lenses = requests.post(base_url + "/focusing/lenses")
+    assert lenses.json() != {"lenses": []}
+
+
+@pytest.mark.dependency(depends=["test_environment"])
 @pytest.mark.parametrize("bundles", BUNDLES)
 @pytest.mark.parametrize("patient_ids", PATIENT_IDS)
 def test_all_preprocess_data(bundles, patient_ids, base_url):
@@ -176,7 +182,7 @@ def test_check_bundles_in_list(base_url):
 # 2025-01-16T09:44:37.410Z  INFO 1 --- [nio-8080-exec-4] fhirtest.access                          : Path[/fhir] Source[] Operation[search-type  List] UA[Dart/3.5 (dart:io)] Params[?subject.identifier=39.955] ResponseEncoding[JSON] Operation[search-type  List] UA[Dart/3.5 (dart:io)] Params[?subject.identifier=39.955] ResponseEncoding[JSON]
 
 
-@pytest.mark.dependency(depends=["test_environment"])
+@pytest.mark.dependency(depends=["test_environment", "test_if_lens_exist"])
 @pytest.mark.parametrize("bundles", BUNDLES)
 @pytest.mark.parametrize("patient_ids", PATIENT_IDS)
 @pytest.mark.parametrize("lenses", LENSES)
@@ -205,7 +211,7 @@ def test_lenses_foralreadypreprocess_data(bundles, lenses, patient_ids, base_url
     assert value in [0]
 
 
-@pytest.mark.dependency(depends=["test_environment"])
+@pytest.mark.dependency(depends=["test_environment", "test_if_lens_exist"])
 @pytest.mark.parametrize("bundles", BUNDLES)
 @pytest.mark.parametrize("patient_ids", PATIENT_IDS)
 def test_all_lenses_data(bundles, patient_ids, base_url):
@@ -218,6 +224,31 @@ def test_all_lenses_data(bundles, patient_ids, base_url):
     )
     print(WEBSITE_URL)
     bundleresp = requests.post(WEBSITE_URL)
+
+    assert bundleresp.status_code == 200
+
+    warnings = eval(bundleresp.headers.get("gh-focusing-warnings", "{}"))
+    value = evaluate_result(bundleresp.status_code, warnings)
+
+    # ✅ Core assertion
+    assert value in [0]
+
+
+TEST_CASE_IDS = ["1", "2"]  # You can expand this list as needed
+
+
+@pytest.mark.dependency(depends=["test_environment", "test_if_lens_exist"])
+@pytest.mark.parametrize("lenses", LENSES)
+@pytest.mark.parametrize("patient_ids", PATIENT_IDS)
+@pytest.mark.parametrize("load_local_data", TEST_CASE_IDS, indirect=True)
+def test_all_lenses_with_context(load_local_data, lenses, base_url):
+    WEBSITE_URL = base_url + "focusing/focus?preprocessors=preprocessing-service-manual"
+    print(WEBSITE_URL)
+    ips, epi = load_local_data()
+    assert ips is not None and epi is not None, "Missing input files for this test case"
+
+    payload = {"ips": ips, "epi": epi}
+    bundleresp = requests.post(WEBSITE_URL, json=payload)
 
     assert bundleresp.status_code == 200
 
