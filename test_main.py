@@ -52,10 +52,15 @@ def test_ips_identifier_and_check_medication(persona, base_url):
     assert len(medication) > 0, f"No medication data found for persona {persona}"
 
 
-@pytest.mark.dependency(depends=["test_environment"])
+# @pytest.mark.dependency(depends=["test_environment"])
 def test_if_lens_exist(base_url):
-    lenses = requests.post(base_url + "/focusing/lenses")
-    assert lenses.json() != {"lenses": []}
+    response = requests.get(base_url + "/focusing/lenses")
+    data = response.json()
+
+    print(data)
+    assert response.status_code == 200, "Expected 200 OK"
+    assert "lenses" in data, "'lenses' key missing in response"
+    assert len(data["lenses"]) > 0, "Expected at least one lens"
 
 
 @pytest.mark.dependency(depends=["test_environment"])
