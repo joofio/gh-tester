@@ -371,7 +371,7 @@ def test_questionnaire_lens(base_url):
 
     # Check for keywords
     assert "questionnaire-lens" in response_text
-    assert " highlight " in response_text
+    assert "https://example.org/questionnaire/high-risk" in response_text
 
 
 def test_doping_lens(base_url):
