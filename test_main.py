@@ -1,3 +1,5 @@
+import json
+
 import pytest
 import requests
 from conftest import (
@@ -7,6 +9,7 @@ from conftest import (
     PATIENT_IDS,
     evaluate_result,
     get_bundles_raw,
+    load_local_data,
     parse_ips_med,
 )
 
@@ -239,19 +242,23 @@ def test_all_lenses_data(bundles, patient_ids, base_url):
     assert value in [0]
 
 
-TEST_CASE_IDS = ["1", "2"]  # You can expand this list as needed
-
-
 @pytest.mark.dependency(depends=["test_environment", "test_if_lens_exist"])
-@pytest.mark.parametrize("load_local_data", TEST_CASE_IDS, indirect=True)
-def test_all_lenses_with_context(load_local_data, base_url):
-    WEBSITE_URL = base_url + "focusing/focus?preprocessors=preprocessing-service-manual"
+def test_pregnancy_lens(base_url):
+    WEBSITE_URL = (
+        base_url
+        + "focusing/focus?preprocessors=preprocessing-service-manual&lenses=pregnancy-lens"
+    )
     print(WEBSITE_URL)
-    ips, epi = load_local_data()
+    ips, epi = load_local_data(1)
     assert ips is not None and epi is not None, "Missing input files for this test case"
 
     payload = {"ips": ips, "epi": epi}
-    bundleresp = requests.post(WEBSITE_URL, json=payload)
+    headers = {
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+    }
+    # print(payload)
+    bundleresp = requests.post(WEBSITE_URL, json=payload, headers=headers)
 
     assert bundleresp.status_code == 200
 
@@ -260,3 +267,176 @@ def test_all_lenses_with_context(load_local_data, base_url):
 
     # ✅ Core assertion
     assert value in [0]
+
+    response_text = json.dumps(bundleresp.json())
+
+    # Check for keywords
+    assert "pregnancy-lens" in response_text
+    assert " highlight " in response_text
+
+
+# @pytest.mark.dependency(depends=["test_environment", "test_if_lens_exist"])
+def test_allergy_lens(base_url):
+    WEBSITE_URL = (
+        base_url
+        + "focusing/focus?preprocessors=preprocessing-service-manual&lenses=allergyintollerance-lens"
+    )
+    print(WEBSITE_URL)
+    ips, epi = load_local_data(2)
+    assert ips is not None and epi is not None, "Missing input files for this test case"
+
+    payload = {"ips": ips, "epi": epi}
+    headers = {
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+    }
+    # print(payload)
+    bundleresp = requests.post(WEBSITE_URL, json=payload, headers=headers)
+
+    assert bundleresp.status_code == 200
+
+    warnings = eval(bundleresp.headers.get("gh-focusing-warnings", "{}"))
+    value = evaluate_result(bundleresp.status_code, warnings)
+
+    # ✅ Core assertion
+    assert value in [0]
+
+    response_text = json.dumps(bundleresp.json())
+
+    # Check for keywords
+    assert "allergyintollerance-lens" in response_text
+    assert " highlight " in response_text
+
+
+def test_contact_lens(base_url):
+    WEBSITE_URL = (
+        base_url
+        + "focusing/focus?preprocessors=preprocessing-service-manual&lenses=contact-lens"
+    )
+    print(WEBSITE_URL)
+    ips, epi = load_local_data(3)
+    assert ips is not None and epi is not None, "Missing input files for this test case"
+
+    payload = {"ips": ips, "epi": epi}
+    headers = {
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+    }
+    # print(payload)
+    bundleresp = requests.post(WEBSITE_URL, json=payload, headers=headers)
+
+    assert bundleresp.status_code == 200
+
+    warnings = eval(bundleresp.headers.get("gh-focusing-warnings", "{}"))
+    value = evaluate_result(bundleresp.status_code, warnings)
+
+    # ✅ Core assertion
+    assert value in [0]
+
+    response_text = json.dumps(bundleresp.json())
+    print(response_text)
+    # Check for keywords
+    assert "contact-lens" in response_text
+    assert " highlight " in response_text
+
+
+def test_questionnaire_lens(base_url):
+    WEBSITE_URL = (
+        base_url
+        + "focusing/focus?preprocessors=preprocessing-service-manual&lenses=questionnaire-lens"
+    )
+    print(WEBSITE_URL)
+    ips, epi = load_local_data(4)
+    assert ips is not None and epi is not None, "Missing input files for this test case"
+
+    payload = {"ips": ips, "epi": epi}
+    headers = {
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+    }
+    # print(payload)
+    bundleresp = requests.post(WEBSITE_URL, json=payload, headers=headers)
+
+    assert bundleresp.status_code == 200
+
+    warnings = eval(bundleresp.headers.get("gh-focusing-warnings", "{}"))
+    print(warnings)
+    value = evaluate_result(bundleresp.status_code, warnings)
+
+    # ✅ Core assertion
+    assert value in [0]
+
+    response_text = json.dumps(bundleresp.json())
+    print(response_text)
+
+    # Check for keywords
+    assert "questionnaire-lens" in response_text
+    assert " highlight " in response_text
+
+
+def test_doping_lens(base_url):
+    WEBSITE_URL = (
+        base_url
+        + "focusing/focus?preprocessors=preprocessing-service-manual&lenses=doping-lens"
+    )
+    print(WEBSITE_URL)
+    ips, epi = load_local_data(5)
+    assert ips is not None and epi is not None, "Missing input files for this test case"
+
+    payload = {"ips": ips, "epi": epi}
+    headers = {
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+    }
+    # print(payload)
+    bundleresp = requests.post(WEBSITE_URL, json=payload, headers=headers)
+
+    assert bundleresp.status_code == 200
+
+    warnings = eval(bundleresp.headers.get("gh-focusing-warnings", "{}"))
+    print(warnings)
+    value = evaluate_result(bundleresp.status_code, warnings)
+
+    # ✅ Core assertion
+    assert value in [0]
+
+    response_text = json.dumps(bundleresp.json())
+    print(response_text)
+
+    # Check for keywords
+    assert "questionnaire-lens" in response_text
+    assert " highlight " in response_text
+
+
+def test_indication_lens(base_url):
+    WEBSITE_URL = (
+        base_url
+        + "focusing/focus?preprocessors=preprocessing-service-manual&lenses=indication-lens"
+    )
+    print(WEBSITE_URL)
+    ips, epi = load_local_data(6)
+    assert ips is not None and epi is not None, "Missing input files for this test case"
+
+    payload = {"ips": ips, "epi": epi}
+    headers = {
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+    }
+    # print(payload)
+    bundleresp = requests.post(WEBSITE_URL, json=payload, headers=headers)
+
+    assert bundleresp.status_code == 200
+
+    warnings = eval(bundleresp.headers.get("gh-focusing-warnings", "{}"))
+    print(warnings)
+    value = evaluate_result(bundleresp.status_code, warnings)
+
+    # ✅ Core assertion
+    assert value in [0]
+
+    response_text = json.dumps(bundleresp.json())
+    print(response_text)
+
+    # Check for keywords
+    assert "indication-lens" in response_text
+    assert " highlight " in response_text

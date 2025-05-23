@@ -209,15 +209,17 @@ def get_bundles_raw(list):
     return bundles_raw
 
 
-@pytest.fixture
-def load_local_data():
-    def _load(patient_id, lens):
-        # Construct file path
-        filename = f"{patient_id}_{lens}.json"
-        filepath = os.path.join(os.path.dirname(__file__), "data", filename)
+def load_local_data(case_id: int):
+    base_path = os.path.join(os.path.dirname(__file__), "data")
 
-        # Load the JSON content
-        with open(filepath, "r", encoding="utf-8") as f:
-            return json.load(f)
+    ips_path = os.path.join(base_path, f"{case_id}_ips.json")
+    epi_path = os.path.join(base_path, f"{case_id}_epi.json")
 
-    return _load
+    try:
+        with open(ips_path, encoding="utf-8") as f:
+            ips = json.load(f)
+        with open(epi_path, encoding="utf-8") as f:
+            epi = json.load(f)
+        return ips, epi
+    except FileNotFoundError:
+        return None, None

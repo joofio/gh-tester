@@ -1,0 +1,484 @@
+{
+  "resourceType": "Bundle",
+  "id": "gravitate-helen",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/uv/ips/StructureDefinition/Bundle-uv-ips"
+    ]
+  },
+  "type": "document",
+  "identifier": {
+    "system": "https://www.gravitatehealth.eu/sid/doc",
+    "value": "helen-ips-1"
+  },
+  "timestamp": "2021-04-18T09:22:00+02:00",
+  "entry": [
+    {
+      "fullUrl": "https://myserver.org/Composition/5702fd1d-dd26-402e-a7c0-7629a5d9bba1",
+      "resource": {
+        "resourceType": "Composition",
+        "id": "gravitate-helen",
+        "status": "final",
+        "type": {
+          "coding": [
+            {
+              "code": "60591-5",
+              "system": "http://loinc.org",
+              "display": "Patient summary Document"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/be61951b-44fc-4853-8822-f9d398193c50",
+          "display": "Helen Gravitate"
+        },
+        "date": "2018-07-10T15:22:00+02:00",
+        "author": [
+          {
+            "reference": "Practitioner/45cd0bd4-f685-4117-a9f0-5c53fffb7266",
+            "display": "Dr. Anna Karlsson"
+          }
+        ],
+        "title": "Patient Summary (Helen Gravitate)",
+        "confidentiality": "N",
+        "section": [
+          {
+            "title": "Allergies and Intolerances",
+            "code": {
+              "coding": [
+                {
+                  "code": "48765-2",
+                  "system": "http://loinc.org",
+                  "display": "Allergies and adverse reactions Document"
+                }
+              ]
+            },
+            "text": {
+              "status": "generated",
+              "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><ul><li>Hay fever (pollen)</li></ul></div>"
+            },
+            "entry": [
+              {
+                "reference": "AllergyIntolerance/cb6e84fa-4302-4569-ac1c-6b1b32507d16",
+                "display": "Lactose Intolerance"
+              }
+            ]
+          },
+          {
+            "title": "Problem List",
+            "code": {
+              "coding": [
+                {
+                  "code": "11450-4",
+                  "system": "http://loinc.org",
+                  "display": "Problem list Reported"
+                }
+              ]
+            },
+            "text": {
+              "status": "generated",
+              "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><ul><li>Diabetes type 1</li></ul></div>"
+            },
+            "entry": [
+              {
+                "reference": "Condition/de06df6b-0967-4b01-822b-7cfeea970aa7",
+                "display": "Diabetes type 1"
+              }
+            ]
+          },
+          {
+            "title": "Medication Summary",
+            "code": {
+              "coding": [
+                {
+                  "code": "10160-0",
+                  "system": "http://loinc.org",
+                  "display": "Hx of Medication use"
+                }
+              ]
+            },
+            "text": {
+              "status": "generated",
+              "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table><thead><tr><th>Brand Name</th><th>MAN</th><th>Active Substance</th><th>Common Name</th><th>ATC</th><th>Strength</th><th>Dose Form</th><th>RoA</th></tr></thead><tbody><tr><td>Humalog Mix50 Insulin KwikPen, 3ml pre-fill</td><td>EU/1/96/007/035</td><td>insulin lispro (GFX7QIS1II)</td><td>insulin lispro</td><td>A10AD04</td><td>100 U/ml</td><td>Suspension for injection</td><td>Subcutaneous use</td></tr><tr><td>Monuril 3 g granules for oral solution</td><td>PL31654/0006</td><td>FOSFOMYCIN (2N81MY12TE)</td><td>fosfomycin</td><td>J01XX01</td><td>3 g (as trometamol: 5.631g/sachet)</td><td>Granules for oral solution</td><td>Oral use</td></tr></tbody></table></div>"
+            },
+            "entry": [
+              {
+                "reference": "MedicationStatement/18eb9898-dea7-4c5e-b097-e507e011747b",
+                "display": "Humalog Mix50 Insulin KwikPen, 3ml pre-fill"
+              },
+              {
+                "reference": "MedicationStatement/c90b943a-3d8e-4f14-b56d-5c5c208b2065",
+                "display": "Monuril 3 g granules for oral solution"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "https://myserver.org/Patient/be61951b-44fc-4853-8822-f9d398193c50",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "be61951b-44fc-4853-8822-f9d398193c50",
+        "extension": [
+          {
+            "extension": [
+              {
+                "url": "code",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "code": "GB",
+                      "system": "urn:iso:std:iso:3166",
+                      "display": "United Kingdom of Great Britain and Northern Ireland"
+                    }
+                  ]
+                }
+              }
+            ],
+            "url": "http://hl7.org/fhir/StructureDefinition/patient-citizenship"
+          }
+        ],
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Helen Gravitate, Female, 75 years old (1946-05-05)</div>"
+        },
+        "identifier": [
+          {
+            "system": "https://www.gravitatehealth.eu/sid/doc",
+            "value": "helen-1"
+          }
+        ],
+        "active": true,
+        "name": [
+          {
+            "family": "Gravitate",
+            "given": [
+              "Helen"
+            ]
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1946-05-05"
+      }
+    },
+    {
+      "fullUrl": "https://myserver.org/Practitioner/45cd0bd4-f685-4117-a9f0-5c53fffb7266",
+      "resource": {
+        "resourceType": "Practitioner",
+        "id": "45cd0bd4-f685-4117-a9f0-5c53fffb7266",
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Dr. Anne Karlsson</div>"
+        },
+        "name": [
+          {
+            "family": "Karlsson",
+            "given": [
+              "Anne"
+            ],
+            "prefix": [
+              "Dr."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "https://myserver.org/AllergyIntolerance/cb6e84fa-4302-4569-ac1c-6b1b32507d16",
+      "resource": {
+        "resourceType": "AllergyIntolerance",
+        "id": "cb6e84fa-4302-4569-ac1c-6b1b32507d16",
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Lactose Intolerance</div>"
+        },
+        "clinicalStatus": {
+          "coding": [
+            {
+              "code": "active",
+              "system": "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "code": "confirmed",
+              "system": "http://terminology.hl7.org/CodeSystem/allergyintolerance-verification"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "code": "47703008",
+              "system": "http://snomed.info/sct",
+              "display": "Lactose"
+            }
+          ]
+        },
+        "patient": {
+          "reference": "Patient/be61951b-44fc-4853-8822-f9d398193c50",
+          "display": "Helen Gravitate"
+        }
+      }
+    },
+    {
+      "fullUrl": "https://myserver.org/Condition/de06df6b-0967-4b01-822b-7cfeea970aa7",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "de06df6b-0967-4b01-822b-7cfeea970aa7",
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Diabetes mellitus type 1 (2015)</div>"
+        },
+        "clinicalStatus": {
+          "coding": [
+            {
+              "code": "active",
+              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical"
+            }
+          ]
+        },
+        "code": {
+          "coding": [
+            {
+              "code": "46635009",
+              "system": "http://snomed.info/sct",
+              "display": "Diabetes mellitus type 1"
+            }
+          ],
+          "text": "Diabetes type 1"
+        },
+        "subject": {
+          "reference": "Patient/be61951b-44fc-4853-8822-f9d398193c50",
+          "display": "Helen Gravitate"
+        },
+        "onsetDateTime": "2015",
+        "asserter": {
+          "reference": "Practitioner/45cd0bd4-f685-4117-a9f0-5c53fffb7266",
+          "display": "Dr. Anna Karlsson"
+        }
+      }
+    },
+    {
+      "fullUrl": "https://myserver.org/MedicationStatement/18eb9898-dea7-4c5e-b097-e507e011747b",
+      "resource": {
+        "resourceType": "MedicationStatement",
+        "id": "18eb9898-dea7-4c5e-b097-e507e011747b",
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table><thead><tr><th>Brand Name</th><th>MAN</th><th>Active Substance</th><th>Common Name</th><th>ATC</th><th>Strength</th><th>Dose Form</th><th>RoA</th></tr></thead><tbody><tr><td>Humalog Mix50 Insulin KwikPen, 3ml pre-fill</td><td>EU/1/96/007/035</td><td>insulin lispro (GFX7QIS1II)</td><td>insulin lispro</td><td>A10AD04</td><td>100 U/ml</td><td>Suspension for injection</td><td>Subcutaneous use</td></tr></tbody></table></div>"
+        },
+        "status": "active",
+        "medicationReference": {
+          "reference": "Medication/9d7be868-8264-4d94-ad04-ef04ecc92e50",
+          "display": "Humalog Mix50 Insulin KwikPen, 3ml pre-fill"
+        },
+        "subject": {
+          "reference": "Patient/be61951b-44fc-4853-8822-f9d398193c50",
+          "display": "Helen Gravitate"
+        },
+        "dosage": [
+          {
+            "route": {
+              "coding": [
+                {
+                  "code": "20066000",
+                  "system": "http://standardterms.edqm.eu",
+                  "display": "Subcutaneous use"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "https://myserver.org/MedicationStatement/c90b943a-3d8e-4f14-b56d-5c5c208b2065",
+      "resource": {
+        "resourceType": "MedicationStatement",
+        "id": "c90b943a-3d8e-4f14-b56d-5c5c208b2065",
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table><thead><tr><th>Brand Name</th><th>MAN</th><th>Active Substance</th><th>Common Name</th><th>ATC</th><th>Strength</th><th>Dose Form</th><th>RoA</th></tr></thead><tbody><tr><td>Monuril 3 g granules for oral solution</td><td>PL31654/0006</td><td>FOSFOMYCIN (2N81MY12TE)</td><td>fosfomycin</td><td>J01XX01</td><td>3 g (as trometamol: 5.631g/sachet)</td><td>Granules for oral solution</td><td>Oral use</td></tr></tbody></table></div>"
+        },
+        "status": "active",
+        "medicationReference": {
+          "reference": "Medication/fdb5c97f-0a46-41ba-bc34-2efd2ef2f7e3",
+          "display": "Monuril 3g granules for oral solution"
+        },
+        "subject": {
+          "reference": "Patient/be61951b-44fc-4853-8822-f9d398193c50",
+          "display": "Helen Gravitate"
+        },
+        "dosage": [
+          {
+            "route": {
+              "coding": [
+                {
+                  "code": "20053000",
+                  "system": "http://standardterms.edqm.eu",
+                  "display": "Oral use"
+                }
+              ]
+            }
+          }
+        ],
+        "basedOn": [
+          {
+            "reference": "MedicationRequest/c872135e-f219-4f32-8fd6-7099009abf42"
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "https://myserver.org/MedicationRequest/c872135e-f219-4f32-8fd6-7099009abf42",
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "c872135e-f219-4f32-8fd6-7099009abf42",
+        "status": "active",
+        "intent": "order",
+        "subject": {
+          "reference": "Patient/be61951b-44fc-4853-8822-f9d398193c50"
+        },
+        "medicationReference": {
+          "reference": "Medication/fdb5c97f-0a46-41ba-bc34-2efd2ef2f7e3",
+          "display": "Monuril"
+        }
+      }
+    },
+    {
+      "fullUrl": "https://myserver.org/Medication/9d7be868-8264-4d94-ad04-ef04ecc92e50",
+      "resource": {
+        "resourceType": "Medication",
+        "id": "9d7be868-8264-4d94-ad04-ef04ecc92e50",
+        "code": {
+          "coding": [
+            {
+              "code": "EU/1/96/007/035",
+              "system": "https://spor.ema.europa.eu/pmswi",
+              "display": "Humalog Mix50 KwikPen 100 U/ml 5 pre-filled pen"
+            },
+            {
+              "code": "0xF79CABF272B6A7EEF104DDDA44E82717",
+              "system": "https://www.who-umc.org/phpid",
+              "display": "Insulin Lispro 100 U/ml 5 pre-filled pen"
+            },
+            {
+              "code": "388454007",
+              "system": "http://snomed.info/sct",
+              "display": "Product containing insulin lispro (medicinal product)"
+            },
+            {
+              "code": "A10AD04",
+              "system": "http://www.whocc.no/atc",
+              "display": "insulin lispro"
+            }
+          ]
+        },
+        "form": {
+          "coding": [
+            {
+              "code": "11202000",
+              "system": "http://standardterms.edqm.eu",
+              "display": "Suspension for injection"
+            }
+          ]
+        },
+        "ingredient": [
+          {
+            "itemCodeableConcept": {
+              "coding": [
+                {
+                  "code": "GFX7QIS1II",
+                  "system": "http://fdasis.nlm.nih.gov",
+                  "display": "insulin lispro"
+                }
+              ],
+              "text": "insulin lispro"
+            },
+            "strength": {
+              "numerator": {
+                "value": 100,
+                "unit": "units",
+                "system": "http://unitsofmeasure.org",
+                "code": "U"
+              },
+              "denominator": {
+                "value": 1,
+                "unit": "ml",
+                "system": "http://unitsofmeasure.org",
+                "code": "ml"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "https://myserver.org/Medication/fdb5c97f-0a46-41ba-bc34-2efd2ef2f7e3",
+      "resource": {
+        "resourceType": "Medication",
+        "id": "fdb5c97f-0a46-41ba-bc34-2efd2ef2f7e3",
+        "code": {
+          "coding": [
+            {
+              "code": "PL31654/0087",
+              "system": "https://spor.ema.europa.eu/pmswi",
+              "display": "Monuril"
+            },
+            {
+              "code": "0xE857DA811B4A6F3BD57810C45D2EA1RF",
+              "system": "https://www.who-umc.org/phpid",
+              "display": "Fosfomycin, 3g, Granules for oral solution"
+            },
+            {
+              "code": "J01XX01",
+              "system": "http://www.whocc.no/atc",
+              "display": "fosfomycin"
+            }
+          ]
+        },
+        "form": {
+          "coding": [
+            {
+              "code": "10112000",
+              "system": "http://standardterms.edqm.eu",
+              "display": "Granules for oral solution"
+            }
+          ]
+        },
+        "ingredient": [
+          {
+            "itemCodeableConcept": {
+              "coding": [
+                {
+                  "code": "7FXW6U30GY",
+                  "system": "http://fdasis.nlm.nih.gov",
+                  "display": "FOSFOMYCIN TROMETHAMINE"
+                }
+              ],
+              "text": "FOSFOMYCIN TROMETAMOL"
+            },
+            "strength": {
+              "numerator": {
+                "value": 5.631,
+                "unit": "g",
+                "system": "http://unitsofmeasure.org",
+                "code": "g"
+              },
+              "denominator": {
+                "value": 1,
+                "unit": "Sachet",
+                "system": "http://unitsofmeasure.org",
+                "code": "{sachet}"
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
