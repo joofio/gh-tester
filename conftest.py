@@ -147,6 +147,12 @@ ENHANCED_WHITE_LIST = [
     "bundle-ibrance75-100-125",
     "bundlepackageleaflet-379d610f9c96d541562699215b0864127",
     "bundlepackageleaflet-378d610f9c96d541562699215b0864126",
+    "DPHARM123",
+    "FK40274",
+    "FK40703",
+    "FK37796",
+    "FK40963",
+    "FK39664",
 ]
 
 

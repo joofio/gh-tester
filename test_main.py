@@ -404,7 +404,7 @@ def test_doping_lens(base_url):
     print(response_text)
 
     # Check for keywords
-    assert "questionnaire-lens" in response_text
+    assert "doping-lens" in response_text
     assert " highlight " in response_text
 
 
