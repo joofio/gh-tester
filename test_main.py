@@ -55,7 +55,7 @@ def test_ips_identifier_and_check_medication(persona, base_url):
     assert len(medication) > 0, f"No medication data found for persona {persona}"
 
 
-# @pytest.mark.dependency(depends=["test_environment"])
+@pytest.mark.dependency(depends=["test_environment"])
 def test_if_lens_exist(base_url):
     response = requests.get(base_url + "/focusing/lenses")
     data = response.json()
@@ -275,7 +275,7 @@ def test_pregnancy_lens(base_url):
     assert " highlight " in response_text
 
 
-# @pytest.mark.dependency(depends=["test_environment", "test_if_lens_exist"])
+@pytest.mark.dependency(depends=["test_environment", "test_if_lens_exist"])
 def test_allergy_lens(base_url):
     WEBSITE_URL = (
         base_url
@@ -308,6 +308,7 @@ def test_allergy_lens(base_url):
     assert " highlight " in response_text
 
 
+@pytest.mark.dependency(depends=["test_environment", "test_if_lens_exist"])
 def test_contact_lens(base_url):
     WEBSITE_URL = (
         base_url
@@ -334,12 +335,13 @@ def test_contact_lens(base_url):
     assert value in [0]
 
     response_text = json.dumps(bundleresp.json())
-    print(response_text)
+    # print(response_text)
     # Check for keywords
     assert "contact-lens" in response_text
     assert " highlight " in response_text
 
 
+@pytest.mark.dependency(depends=["test_environment", "test_if_lens_exist"])
 def test_questionnaire_lens(base_url):
     WEBSITE_URL = (
         base_url
@@ -360,20 +362,21 @@ def test_questionnaire_lens(base_url):
     assert bundleresp.status_code == 200
 
     warnings = eval(bundleresp.headers.get("gh-focusing-warnings", "{}"))
-    print(warnings)
+    # print(warnings)
     value = evaluate_result(bundleresp.status_code, warnings)
 
     # ✅ Core assertion
     assert value in [0]
 
     response_text = json.dumps(bundleresp.json())
-    print(response_text)
+    #   print(response_text)
 
     # Check for keywords
     assert "questionnaire-lens" in response_text
     assert "https://example.org/questionnaire/high-risk" in response_text
 
 
+@pytest.mark.dependency(depends=["test_environment", "test_if_lens_exist"])
 def test_doping_lens(base_url):
     WEBSITE_URL = (
         base_url
@@ -394,24 +397,25 @@ def test_doping_lens(base_url):
     assert bundleresp.status_code == 200
 
     warnings = eval(bundleresp.headers.get("gh-focusing-warnings", "{}"))
-    print(warnings)
+    # print(warnings)
     value = evaluate_result(bundleresp.status_code, warnings)
 
     # ✅ Core assertion
     assert value in [0]
 
     response_text = json.dumps(bundleresp.json())
-    print(response_text)
+    #  print(response_text)
 
     # Check for keywords
     assert "doping-lens" in response_text
     assert " highlight " in response_text
 
 
-def test_indication_lens(base_url):
+@pytest.mark.dependency(depends=["test_environment", "test_if_lens_exist"])
+def test_conditions_lens(base_url):
     WEBSITE_URL = (
         base_url
-        + "focusing/focus?preprocessors=preprocessing-service-manual&lenses=indication-lens"
+        + "focusing/focus?preprocessors=preprocessing-service-manual&lenses=conditions-lens"
     )
     print(WEBSITE_URL)
     ips, epi = load_local_data(6)
@@ -428,15 +432,15 @@ def test_indication_lens(base_url):
     assert bundleresp.status_code == 200
 
     warnings = eval(bundleresp.headers.get("gh-focusing-warnings", "{}"))
-    print(warnings)
+    # print(warnings)
     value = evaluate_result(bundleresp.status_code, warnings)
 
     # ✅ Core assertion
     assert value in [0]
 
     response_text = json.dumps(bundleresp.json())
-    print(response_text)
+    #  print(response_text)
 
     # Check for keywords
-    assert "indication-lens" in response_text
+    assert "conditions-lens" in response_text
     assert " highlight " in response_text
