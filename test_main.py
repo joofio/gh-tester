@@ -242,6 +242,38 @@ def test_all_lenses_data(bundles, patient_ids, base_url):
     assert value in [0]
 
 
+### test AI SUMMARY
+
+
+@pytest.mark.dependency(depends=["test_environment"])
+@pytest.mark.parametrize("patient_ids", PATIENT_IDS)
+def test_ai_summary(base_url, patient_ids):
+    # pass
+    WEBSITE_URL = (
+        base_url
+        + "ai/summary/"
+        + "bundle-semaglutide-proc"
+        + "?preprocessors=preprocessing-service-manual&patientIdentifier="
+        + patient_ids
+        + "&lenses=lens-summary-2&model=graviting-llama"
+    )
+    print(WEBSITE_URL)
+    bundleresp = requests.get(WEBSITE_URL)
+
+    assert bundleresp.status_code == 200
+
+    warnings = eval(bundleresp.headers.get("gh-focusing-warnings", "{}"))
+    value = evaluate_result(bundleresp.status_code, warnings)
+
+    # ✅ Core assertion
+    assert value in [0]
+
+
+# GET https://gravitate-health.lst.tfo.upm.es/ai/summary/bundle-semaglutide-proc?preprocessors=preprocessing-service-manual&patientIdentifier=66dfc284-c19e-427b-914e-b3156bdc86d6&lenses=lens-summary-2&model=graviting-llama
+# content-type: application/json
+# Accept: application/json
+
+
 @pytest.mark.dependency(depends=["test_environment", "test_if_lens_exist"])
 def test_pregnancy_lens(base_url):
     WEBSITE_URL = (
@@ -443,4 +475,39 @@ def test_conditions_lens(base_url):
 
     # Check for keywords
     assert "conditions-lens" in response_text
+    assert " highlight " in response_text
+
+
+@pytest.mark.dependency(depends=["test_environment", "test_if_lens_exist"])
+def test_test_lab_lens(base_url):
+    WEBSITE_URL = (
+        base_url
+        + "focusing/focus?preprocessors=preprocessing-service-manual&lenses=lab-lens"
+    )
+    print(WEBSITE_URL)
+    ips, epi = load_local_data(7)
+    assert ips is not None and epi is not None, "Missing input files for this test case"
+
+    payload = {"ips": ips, "epi": epi}
+    headers = {
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+    }
+    # print(payload)
+    bundleresp = requests.post(WEBSITE_URL, json=payload, headers=headers)
+
+    assert bundleresp.status_code == 200
+
+    warnings = eval(bundleresp.headers.get("gh-focusing-warnings", "{}"))
+    # print(warnings)
+    value = evaluate_result(bundleresp.status_code, warnings)
+
+    # ✅ Core assertion
+    assert value in [0]
+
+    response_text = json.dumps(bundleresp.json())
+    #  print(response_text)
+
+    # Check for keywords
+    assert "lab-lens" in response_text
     assert " highlight " in response_text
