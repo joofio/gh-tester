@@ -180,7 +180,7 @@
               "extension": [
                 {
                   "url": "elementClass",
-                  "valueString": "contra-indication-hypericum"
+                  "valueString": "renal-dose-adjustment"
                 },
                 {
                   "url": "concept",
@@ -188,9 +188,9 @@
                     "concept": {
                       "coding": [
                         {
-                          "code": "XK4IUX8MNB",
-                          "system": "https://gsrs.ncats.nih.gov/ginas/app/beta",
-                          "display": "Hypericum perforatum L."
+                          "code": "236423003",
+                          "system": "http://snomed.info/sct",
+                          "display": "Renal Dose"
                         }
                       ]
                     }
@@ -356,7 +356,7 @@
                   },
                   "text": {
                     "status": "additional",
-                    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p><span>Mantener este medicamento fuera de la vista y del alcance de los ni&#241;os.</span></p><p><span>No utilice este medicamento despu&#233;s de la fecha de caducidad que aparece en la caja y en el frasco despu&#233;s de {CAD}. La fecha de caducidad es el &#250;ltimo d&#237;a del mes que se indica.</span></p><p><span>Conservar en el embalaje original para protegerlo de la humedad. Mantener el frasco perfectamente cerrado. No utilizar si falta el sello del frasco o est&#225; roto.</span></p><p><a name=\"page7\" id=\"page7\"></a><span>Los medicamentos no se deben tirar por los desag&#252;es ni a la basura. Pregunte a su farmac&#233;utico c&#243;mo deshacerse de los envases y de los medicamentos que ya no necesita. De esta forma, ayudar&#225; a proteger el medio ambiente.</span></p></div>"
+                    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p class=\"renal-dose-adjustment\"><span>Mantener este medicamento fuera de la vista y del alcance de los ni&#241;os.</span></p><p><span>No utilice este medicamento despu&#233;s de la fecha de caducidad que aparece en la caja y en el frasco despu&#233;s de {CAD}. La fecha de caducidad es el &#250;ltimo d&#237;a del mes que se indica.</span></p><p><span>Conservar en el embalaje original para protegerlo de la humedad. Mantener el frasco perfectamente cerrado. No utilizar si falta el sello del frasco o est&#225; roto.</span></p><p><a name=\"page7\" id=\"page7\"></a><span>Los medicamentos no se deben tirar por los desag&#252;es ni a la basura. Pregunte a su farmac&#233;utico c&#243;mo deshacerse de los envases y de los medicamentos que ya no necesita. De esta forma, ayudar&#225; a proteger el medio ambiente.</span></p></div>"
                   }
                 },
                 {

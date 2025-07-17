@@ -1,6 +1,6 @@
 {
   "resourceType": "Bundle",
-  "id": "gravitate-Alicia",
+  "id": "gravitate-ips-4",
   "meta": {
     "profile": [
       "http://hl7.org/fhir/uv/ips/StructureDefinition/Bundle-uv-ips"
@@ -9,20 +9,16 @@
   "type": "document",
   "identifier": {
     "system": "https://www.gravitatehealth.eu/sid/doc",
-    "value": "alicia-ips-1"
+    "value": "ips-4"
   },
-  "timestamp": "2023-04-18T09:22:00+02:00",
+  "timestamp": "2021-09-03T08:38:00+02:00",
   "entry": [
     {
-      "fullUrl": "https://myserver.org/Composition/alicia-comp",
+      "fullUrl": "https://myserver.org/Composition/2fa5b223-ebce-4f39-9c66-5dc014f73579",
       "resource": {
         "resourceType": "Composition",
-        "id": "gravitate-Alicia",
+        "id": "ips-example-4",
         "status": "final",
-        "text": {
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><b>Id:</b> gravitate-alicia<br/><b>status:</b> final<br/><b>Type:</b> Patient summary Document<br/><b>Subject:</b> alicia Gravitate<br/><b>Sections:</b><br/><ul><li><b>Title:</b> Problem List<br/><b>Code:</b> Problem list Reported (11450-4)</li><br/><ul><li><b>Entry:</b> <a href=\"Condition-alicia-cond-1.html\">HIV</a></li><br/><li><b>Entry:</b> <a href=\"Condition-alicia-cond-2.html\">Trigeminal neuralgia</a></li><br/><li><b>Entry:</b> <a href=\"Condition-alicia-cond-3.html\">Depression</a></li><br/><li><b>Entry:</b> <a href=\"Condition-alicia-cond-4.html\">Overweight</a></li></ul><li><b>Title:</b> Medication Summary<br/><b>Code:</b> Hx of Medication use (10160-0)</li><br/><ul><li><b>Entry:</b> <a href=\"MedicationStatement-alicia-med-stat-1.html\">BIKTARVY Bictegravir/Emtricitabine/Tenofovir Alafenamide 1 t QD</a></li><br/><li><b>Entry:</b> <a href=\"MedicationStatement-alicia-med-stat-2.html\">Calcium/Vit D</a></li><br/><li><b>Entry:</b> <a href=\"MedicationStatement-alicia-med-stat-3.html\">Folic Acid + Cyanocobalamin + Iodur 1 t QD</a></li><br/><li><b>Entry:</b> <a href=\"MedicationStatement-alicia-med-stat-4.html\">Carbamazepine 1 t TID</a></li><br/><li><b>Entry:</b> <a href=\"MedicationStatement-alicia-med-stat-5.html\">Orlistat 1 cp TID</a></li><br/><li><b>Entry:</b> <a href=\"MedicationStatement-alicia-med-stat-6.html\">St. John’s Wort 2 cp BID</a></li><br/><li><b>Entry:</b> <a href=\"MedicationStatement-alicia-med-stat-7.html\">Collagen and magnesium supplements</a></li><br/></ul></ul></div>",
-          "status": "generated"
-        },
         "type": {
           "coding": [
             {
@@ -33,19 +29,41 @@
           ]
         },
         "subject": {
-          "reference": "Patient/alicia-patient",
-          "display": "Alicia Gravitate"
+          "reference": "Patient/c154158f-6a43-4ab7-8443-e7f4bf915dd2",
+          "display": "Example 4 Gravitate"
         },
         "date": "2018-07-10T15:22:00+02:00",
         "author": [
           {
-            "reference": "Practitioner/alicia-pract",
-            "display": "Dr. Walter Waltz"
+            "reference": "Practitioner/1ece89c5-fda3-4db9-ace6-decbe6c603d2",
+            "display": "Dr. Anna Karlsson"
           }
         ],
-        "title": "Patient Summary (Alicia Gravitate)",
+        "title": "Patient Summary (IPS Example 4 Gravitate)",
         "confidentiality": "N",
         "section": [
+          {
+            "title": "Allergies and Intolerances",
+            "code": {
+              "coding": [
+                {
+                  "code": "48765-2",
+                  "system": "http://loinc.org",
+                  "display": "Allergies and adverse reactions Document"
+                }
+              ]
+            },
+            "entry": [
+              {
+                "reference": "AllergyIntolerance/1dff4474-fa08-4f45-8260-dbb23094bf02",
+                "display": "Hay fever (pollen)"
+              },
+              {
+                "reference": "AllergyIntolerance/9d18cddb-8e58-4fbb-82ec-09cc561ac802",
+                "display": "Lactose Intolerance"
+              }
+            ]
+          },
           {
             "title": "Problem List",
             "code": {
@@ -59,20 +77,16 @@
             },
             "entry": [
               {
-                "reference": "Condition/alicia-cond-1",
-                "display": "Depression"
+                "reference": "Condition/bcc79261-142c-48ec-b032-f3f9af49ec52",
+                "display": "Psoriasis"
               },
               {
-                "reference": "Condition/alicia-cond-2",
-                "display": "HIV"
+                "reference": "Condition/f06b7cf8-c15c-4288-a0f9-45a1026e5132",
+                "display": "Hypertension"
               },
               {
-                "reference": "Condition/alicia-cond-3",
-                "display": "Trigeminal neuralgia"
-              },
-              {
-                "reference": "Condition/alicia-cond-4",
-                "display": "Overweight"
+                "reference": "Condition/a4a9d90a-d1b0-4d60-82f0-c52343dc6252",
+                "display": "Congestive heart failure"
               }
             ]
           },
@@ -87,34 +101,84 @@
                 }
               ]
             },
-            "text": {
-              "div": "<div>Medication list Reported</div>",
-              "status": "additional"
+            "entry": [
+              {
+                "reference": "MedicationStatement/29074ca4-efcb-4ff4-8446-feed2399a892",
+                "display": "Remsima 100 mg powder for concentrate for solution for infusion"
+              },
+              {
+                "reference": "MedicationStatement/f6cb1218-f81c-4338-80d8-3c10910f78f2",
+                "display": "Irbesartan 75 mg Tablet"
+              },
+              {
+                "reference": "MedicationStatement/f26084c9-b1c8-46d9-acb2-1d400ade87b2",
+                "display": "Pentasa Slow Release Tablets 1g"
+              }
+            ]
+          },
+          {
+            "title": "Vital Signs",
+            "code": {
+              "coding": [
+                {
+                  "code": "8716-3",
+                  "system": "http://loinc.org",
+                  "display": "Vital Signs"
+                }
+              ]
             },
             "entry": [
               {
-                "reference": "MedicationStatement/alicia-med-stat-1",
-                "display": "BIKTARVY Bictegravir/Emtricitabine/Tenofovir Alafenamide 1 t QD"
+                "reference": "Observation/bw",
+                "display": "Body weight"
               },
               {
-                "reference": "MedicationStatement/alicia-med-stat-3",
-                "display": "CALCIO/VITAMINA D3 ROVI 1000 mg/880 UI COMPRIMIDOS EFERVESCENTES"
+                "reference": "Observation/bh",
+                "display": "Body height"
               },
               {
-                "reference": "MedicationStatement/alicia-med-stat-4",
-                "display": "Carbamazepine  1 t TID"
+                "reference": "Observation/ips4-bp",
+                "display": "Blood pressure"
               },
               {
-                "reference": "MedicationStatement/alicia-med-stat-5",
-                "display": "Orlistat 1 cp TID"
-              },
+                "reference": "Observation/egfr",
+                "display": "eGFR"
+              }
+            ]
+          },
+          {
+            "title": "Results",
+            "code": {
+              "coding": [
+                {
+                  "code": "30954-2",
+                  "system": "http://loinc.org",
+                  "display": "Relevant diagnostic tests/laboratory data Narrative"
+                }
+              ]
+            },
+            "entry": [
               {
-                "reference": "MedicationStatement/alicia-med-stat-6",
-                "display": "St. John’s Wort 2 cp BID"
-              },
+                "reference": "Observation/glucose",
+                "display": "glucose"
+              }
+            ]
+          },
+          {
+            "title": "Pregnancy History",
+            "code": {
+              "coding": [
+                {
+                  "code": "10162-6",
+                  "system": "http://loinc.org",
+                  "display": "Pregnancies Hx"
+                }
+              ]
+            },
+            "entry": [
               {
-                "reference": "MedicationStatement/alicia-med-stat-8",
-                "display": "Flucelvax"
+                "reference": "Observation/e06e43a1-38d4-468f-8c35-f7f12da91062",
+                "display": "Pregrancy Status"
               }
             ]
           }
@@ -122,10 +186,10 @@
       }
     },
     {
-      "fullUrl": "https://myserver.org/Patient/alicia-patient",
+      "fullUrl": "https://myserver.org/Patient/c154158f-6a43-4ab7-8443-e7f4bf915dd2",
       "resource": {
         "resourceType": "Patient",
-        "id": "alicia-patient",
+        "id": "c154158f-6a43-4ab7-8443-e7f4bf915dd2",
         "extension": [
           {
             "extension": [
@@ -134,9 +198,9 @@
                 "valueCodeableConcept": {
                   "coding": [
                     {
-                      "code": "ES",
+                      "code": "NO",
                       "system": "urn:iso:std:iso:3166",
-                      "display": "Spain"
+                      "display": "Norway"
                     }
                   ]
                 }
@@ -145,18 +209,10 @@
             "url": "http://hl7.org/fhir/StructureDefinition/patient-citizenship"
           }
         ],
-        "text": {
-          "status": "generated",
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Age: 28 years. I live with my boyfriend. PhD Student Interests: I love reading and walking outdoors with my dog. I also love art and photography. Health Conditions: HIV (diagnosed with 25 years) Trigeminal neuralgia Depression Overweight</div>"
-        },
         "identifier": [
           {
             "system": "https://www.gravitatehealth.eu/sid/doc",
-            "value": "alicia-1"
-          },
-          {
-            "system": "keycloak-id",
-            "value": "31297ad1-cb3c-4138-a132-e64016170e1d"
+            "value": "ips-4"
           }
         ],
         "active": true,
@@ -164,24 +220,24 @@
           {
             "family": "Gravitate",
             "given": [
-              "Alicia"
+              "IPS 4 example"
             ]
           }
         ],
         "gender": "female",
-        "birthDate": "1998-10-05"
+        "birthDate": "1989-05-05"
       }
     },
     {
-      "fullUrl": "https://myserver.org/Practitioner/alicia-pract",
+      "fullUrl": "https://myserver.org/Practitioner/1ece89c5-fda3-4db9-ace6-decbe6c603d2",
       "resource": {
         "resourceType": "Practitioner",
-        "id": "alicia-pract",
+        "id": "1ece89c5-fda3-4db9-ace6-decbe6c603d2",
         "name": [
           {
-            "family": "Waltz",
+            "family": "Karlsson",
             "given": [
-              "Walter"
+              "Anne"
             ],
             "prefix": [
               "Dr."
@@ -191,47 +247,163 @@
       }
     },
     {
-      "fullUrl": "https://myserver.org/Condition/alicia-cond-1",
+      "fullUrl": "https://myserver.org/AllergyIntolerance/1dff4474-fa08-4f45-8260-dbb23094bf02",
       "resource": {
-        "resourceType": "Condition",
-        "id": "alicia-cond-1",
-        "meta": {
-          "profile": [
-            "http://hl7.org/fhir/uv/ips/StructureDefinition/Condition-uv-ips"
-          ]
-        },
+        "resourceType": "AllergyIntolerance",
+        "id": "1dff4474-fa08-4f45-8260-dbb23094bf02",
         "clinicalStatus": {
           "coding": [
             {
               "code": "active",
-              "system": "http://terminology.hl7.org/CodeSystem/condition-clinical"
+              "system": "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "code": "confirmed",
+              "system": "http://terminology.hl7.org/CodeSystem/allergyintolerance-verification"
             }
           ]
         },
         "code": {
           "coding": [
             {
-              "code": "35489007",
+              "code": "256259004",
               "system": "http://snomed.info/sct",
-              "display": "Depressive disorder (disorder)"
+              "display": "Pollen"
             }
-          ],
-          "text": "Depressive disorder (disorder)"
+          ]
         },
-        "subject": {
-          "reference": "Patient/alicia-patient",
-          "display": "alicia Gravitate"
+        "type": "allergy",
+        "category": [
+          "environment"
+        ],
+        "reaction": [
+          {
+            "manifestation": [
+              {
+                "coding": [
+                  {
+                    "code": "21719001",
+                    "system": "http://snomed.info/sct",
+                    "display": "Allergic rhinitis caused by pollen"
+                  }
+                ],
+                "text": "Hay fever"
+              }
+            ]
+          }
+        ],
+        "patient": {
+          "reference": "Patient/c154158f-6a43-4ab7-8443-e7f4bf915dd2",
+          "display": "IPS 4 Gravitate"
         }
       }
     },
     {
-      "fullUrl": "https://myserver.org/Condition/alicia-cond-2",
+      "fullUrl": "https://myserver.org/AllergyIntolerance/9d18cddb-8e58-4fbb-82ec-09cc561ac802",
+      "resource": {
+        "resourceType": "AllergyIntolerance",
+        "id": "9d18cddb-8e58-4fbb-82ec-09cc561ac802",
+        "clinicalStatus": {
+          "coding": [
+            {
+              "code": "active",
+              "system": "http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical"
+            }
+          ]
+        },
+        "verificationStatus": {
+          "coding": [
+            {
+              "code": "confirmed",
+              "system": "http://terminology.hl7.org/CodeSystem/allergyintolerance-verification"
+            }
+          ]
+        },
+        "type": "intolerance",
+        "category": [
+          "food"
+        ],
+        "code": {
+          "coding": [
+            {
+              "code": "782415009",
+              "system": "http://snomed.info/sct",
+              "display": "Intolerance to lactose"
+            }
+          ]
+        },
+        "patient": {
+          "reference": "Patient/c154158f-6a43-4ab7-8443-e7f4bf915dd2",
+          "display": "IPS 4 Gravitate"
+        },
+        "onsetAge": {
+          "value": 1,
+          "code": "a",
+          "system": "http://unitsofmeasure.org",
+          "unit": "year"
+        },
+        "recordedDate": "2009-10-09",
+        "reaction": [
+          {
+            "substance": {
+              "coding": [
+                {
+                  "code": "47703008",
+                  "system": "http://snomed.info/sct",
+                  "display": "lactose"
+                }
+              ]
+            },
+            "manifestation": [
+              {
+                "coding": [
+                  {
+                    "code": "21522001",
+                    "system": "http://snomed.info/sct",
+                    "display": "Abdominal pain"
+                  }
+                ]
+              },
+              {
+                "coding": [
+                  {
+                    "code": "116289008",
+                    "system": "http://snomed.info/sct",
+                    "display": "Abdominal bloating"
+                  }
+                ]
+              },
+              {
+                "coding": [
+                  {
+                    "code": "62315008",
+                    "system": "http://snomed.info/sct",
+                    "display": "Diarrhea"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "https://myserver.org/Condition/bcc79261-142c-48ec-b032-f3f9af49ec52",
       "resource": {
         "resourceType": "Condition",
-        "id": "alicia-cond-2",
-        "meta": {
-          "profile": [
-            "http://hl7.org/fhir/uv/ips/StructureDefinition/Condition-uv-ips"
+        "id": "bcc79261-142c-48ec-b032-f3f9af49ec52",
+        "code": {
+          "text": "Psoriasis",
+          "coding": [
+            {
+              "code": "9014002",
+              "system": "http://snomed.info/sct",
+              "display": "Psoriasis"
+            }
           ]
         },
         "clinicalStatus": {
@@ -242,32 +414,21 @@
             }
           ]
         },
-        "code": {
-          "coding": [
-            {
-              "code": "86406008",
-              "system": "http://snomed.info/sct",
-              "display": "Human immunodeficiency virus infection"
-            }
-          ],
-          "text": "Human immunodeficiency virus infection"
-        },
         "subject": {
-          "reference": "Patient/alicia-patient",
-          "display": "alicia Gravitate"
+          "reference": "Patient/c154158f-6a43-4ab7-8443-e7f4bf915dd2",
+          "display": "IPS 4 Gravitate"
         },
-        "onsetDateTime": "2018",
         "asserter": {
-          "reference": "Practitioner/alicia-pract",
-          "display": "Dr. Walter Waltz"
+          "reference": "Practitioner/1ece89c5-fda3-4db9-ace6-decbe6c603d2",
+          "display": "Dr. Anna Karlsson"
         }
       }
     },
     {
-      "fullUrl": "https://myserver.org/Condition/alicia-cond-3",
+      "fullUrl": "https://myserver.org/Condition/a4a9d90a-d1b0-4d60-82f0-c52343dc6252",
       "resource": {
         "resourceType": "Condition",
-        "id": "alicia-cond-3",
+        "id": "a4a9d90a-d1b0-4d60-82f0-c52343dc6252",
         "clinicalStatus": {
           "coding": [
             {
@@ -279,36 +440,29 @@
         "code": {
           "coding": [
             {
-              "code": "31681005",
+              "code": "42343007",
               "system": "http://snomed.info/sct",
-              "display": "Trigeminal neuralgia (disorder)"
+              "display": "Congestive heart failure"
             }
           ],
-          "text": "Trigeminal neuralgia (disorder)"
+          "text": "Congestive heart failure"
         },
         "subject": {
-          "identifier": {
-            "system": "https://www.gravitatehealth.eu/sid/doc",
-            "value": "alicia-1"
-          }
+          "reference": "Patient/c154158f-6a43-4ab7-8443-e7f4bf915dd2",
+          "display": "IPS 4 Gravitate"
         },
-        "onsetDateTime": "2018",
+        "onsetDateTime": "2015",
         "asserter": {
-          "reference": "Practitioner/alicia-pract",
-          "display": "Dr. Walter Waltz"
+          "reference": "Practitioner/1ece89c5-fda3-4db9-ace6-decbe6c603d2",
+          "display": "Dr. Anna Karlsson"
         }
       }
     },
     {
-      "fullUrl": "https://myserver.org/Condition/alicia-cond-4",
+      "fullUrl": "https://myserver.org/Condition/f06b7cf8-c15c-4288-a0f9-45a1026e5132",
       "resource": {
         "resourceType": "Condition",
-        "id": "alicia-cond-4",
-        "meta": {
-          "profile": [
-            "http://hl7.org/fhir/uv/ips/StructureDefinition/Condition-uv-ips"
-          ]
-        },
+        "id": "f06b7cf8-c15c-4288-a0f9-45a1026e5132",
         "clinicalStatus": {
           "coding": [
             {
@@ -320,37 +474,62 @@
         "code": {
           "coding": [
             {
-              "code": "238131007",
+              "code": "38341003",
               "system": "http://snomed.info/sct",
-              "display": "Overweight (finding)"
+              "display": "HT - Hypertension"
             }
           ],
-          "text": "Overweight (finding)"
+          "text": "Hypertension"
         },
         "subject": {
-          "reference": "Patient/alicia-patient",
-          "display": "Alicia Gravitate"
+          "reference": "Patient/c154158f-6a43-4ab7-8443-e7f4bf915dd2",
+          "display": "IPS 4 Gravitate"
         },
-        "onsetDateTime": "2018",
-        "asserter": {
-          "reference": "Practitioner/alicia-pract",
-          "display": "Dr. Walter Waltz"
-        }
+        "onsetDateTime": "1993"
       }
     },
     {
-      "fullUrl": "https://myserver.org/MedicationStatement/alicia-med-stat-1",
+      "fullUrl": "https://myserver.org/MedicationStatement/29074ca4-efcb-4ff4-8446-feed2399a892",
       "resource": {
         "resourceType": "MedicationStatement",
-        "id": "alicia-med-stat-1",
+        "id": "29074ca4-efcb-4ff4-8446-feed2399a892",
         "status": "active",
         "medicationReference": {
-          "reference": "Medication/9d7be868-8264-4d94-ad04-ef04ecc92i99",
-          "display": "BIKTARVY Bictegravir/Emtricitabine/Tenofovir Alafenamide 1 t QD"
+          "reference": "Medication/b50ae644-e0b7-4007-809f-26f493cbe362",
+          "display": "Remsima 100 mg powder for concentrate for solution for infusion"
         },
         "subject": {
-          "reference": "Patient/alicia-patient",
-          "display": "Alicia Gravitate"
+          "reference": "Patient/c154158f-6a43-4ab7-8443-e7f4bf915dd2",
+          "display": "IPS 4 Gravitate"
+        },
+        "dosage": [
+          {
+            "route": {
+              "coding": [
+                {
+                  "code": "20045000",
+                  "system": "http://standardterms.edqm.eu",
+                  "display": "Intravenous use"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "https://myserver.org/MedicationStatement/f6cb1218-f81c-4338-80d8-3c10910f78f2",
+      "resource": {
+        "resourceType": "MedicationStatement",
+        "id": "f6cb1218-f81c-4338-80d8-3c10910f78f2",
+        "status": "active",
+        "medicationReference": {
+          "reference": "Medication/de131e15-ed13-4b31-b38c-3204a84d99c2",
+          "display": "Karvea 75 mg Tablet"
+        },
+        "subject": {
+          "reference": "Patient/c154158f-6a43-4ab7-8443-e7f4bf915dd2",
+          "display": "IPS 4 Gravitate"
         },
         "dosage": [
           {
@@ -368,27 +547,27 @@
       }
     },
     {
-      "fullUrl": "https://myserver.org/MedicationStatement/alicia-med-stat-3",
+      "fullUrl": "https://myserver.org/MedicationStatement/f26084c9-b1c8-46d9-acb2-1d400ade87b2",
       "resource": {
         "resourceType": "MedicationStatement",
-        "id": "alicia-med-stat-3",
+        "id": "f26084c9-b1c8-46d9-acb2-1d400ade87b2",
         "status": "active",
         "medicationReference": {
-          "reference": "Medication/6f4151e9-91f6-4f1e-adc3-fb94dda7785h",
-          "display": "CALCIO/VITAMINA D3 ROVI 1000 mg/880 UI COMPRIMIDOS EFERVESCENTES"
+          "reference": "Medication/9ac3356c-4ea4-4814-84c3-235484f2ef12",
+          "display": "Humalog 100 U/ml 5 pre-filled pen"
         },
         "subject": {
-          "reference": "Patient/alicia-patient",
-          "display": "Alicia Gravitate"
+          "reference": "Patient/c154158f-6a43-4ab7-8443-e7f4bf915dd2",
+          "display": "IPS 4 Gravitate"
         },
         "dosage": [
           {
             "route": {
               "coding": [
                 {
-                  "code": "20053000",
+                  "code": "20066000",
                   "system": "http://standardterms.edqm.eu",
-                  "display": "Oral use"
+                  "display": "Subcutaneous use"
                 }
               ]
             }
@@ -397,178 +576,57 @@
       }
     },
     {
-      "fullUrl": "https://myserver.org/MedicationStatement/alicia-med-stat-4",
-      "resource": {
-        "resourceType": "MedicationStatement",
-        "id": "alicia-med-stat-4",
-        "status": "active",
-        "medicationReference": {
-          "reference": "Medication/6f4151e9-91f6-4f1e-adc3-fb94dda78356",
-          "display": "Carbamazepine  1 t TID"
-        },
-        "subject": {
-          "reference": "Patient/alicia-patient",
-          "display": "alicia Gravitate"
-        },
-        "dosage": [
-          {
-            "route": {
-              "coding": [
-                {
-                  "code": "20053000",
-                  "system": "http://standardterms.edqm.eu",
-                  "display": "Oral use"
-                }
-              ]
-            }
-          }
-        ]
-      }
-    },
-    {
-      "fullUrl": "https://myserver.org/MedicationStatement/alicia-med-stat-5",
-      "resource": {
-        "resourceType": "MedicationStatement",
-        "id": "alicia-med-stat-5",
-        "status": "active",
-        "medicationReference": {
-          "reference": "Medication/6f4151e9-91f6-4f1e-adc3-fb94dda78333",
-          "display": "Orlistat 1 cp TID"
-        },
-        "subject": {
-          "reference": "Patient/alicia-patient",
-          "display": "Alicia Gravitate"
-        },
-        "dosage": [
-          {
-            "route": {
-              "coding": [
-                {
-                  "code": "20053000",
-                  "system": "http://standardterms.edqm.eu",
-                  "display": "Oral use"
-                }
-              ]
-            }
-          }
-        ]
-      }
-    },
-    {
-      "fullUrl": "https://myserver.org/MedicationStatement/alicia-med-stat-6",
-      "resource": {
-        "resourceType": "MedicationStatement",
-        "id": "alicia-med-stat-6",
-        "status": "active",
-        "medicationReference": {
-          "reference": "Medication/6f4151e9-91f6-4f1e-adc3-fb94dda79261",
-          "display": "St. John’s Wort 2 cp BID"
-        },
-        "subject": {
-          "reference": "Patient/alicia-patient",
-          "display": "Alicia Gravitate"
-        },
-        "dosage": [
-          {
-            "route": {
-              "coding": [
-                {
-                  "code": "20053000",
-                  "system": "http://standardterms.edqm.eu",
-                  "display": "Oral use"
-                }
-              ]
-            }
-          }
-        ]
-      }
-    },
-    {
-      "fullUrl": "https://myserver.org/MedicationStatement/alicia-med-stat-8",
-      "resource": {
-        "resourceType": "MedicationStatement",
-        "id": "alicia-med-stat-8",
-        "status": "active",
-        "medicationReference": {
-          "reference": "Medication/6f4151e9-91f6-4f1e-adc3-fb94dda78367",
-          "display": "Flucelvax"
-        },
-        "subject": {
-          "reference": "Patient/alicia-patient",
-          "display": "Alicia Gravitate"
-        },
-        "dosage": [
-          {
-            "route": {
-              "coding": [
-                {
-                  "code": "20035000",
-                  "system": "http://standardterms.edqm.eu",
-                  "display": "Intramuscular use"
-                }
-              ]
-            }
-          }
-        ]
-      }
-    },
-    {
-      "fullUrl": "https://myserver.org/Medication/6f4151e9-91f6-4f1e-adc3-fb94dda78367",
+      "fullUrl": "https://myserver.org/Medication/b50ae644-e0b7-4007-809f-26f493cbe362",
       "resource": {
         "resourceType": "Medication",
-        "id": "6f4151e9-91f6-4f1e-adc3-fb94dda78367",
+        "id": "b50ae644-e0b7-4007-809f-26f493cbe362",
         "code": {
           "coding": [
             {
-              "code": "EU/1/18/1326/001",
+              "code": "EU/1/13/853/001",
               "system": "https://spor.ema.europa.eu/pmswi",
-              "display": "Flucelvax"
+              "display": "Remsima 100 mg powder for concentrate for solution for infusion"
             },
             {
-              "code": "0xbb82cd10ab2add752b2b9224931000k2",
+              "code": "0xF79CABF272B6A7EEF104DDDA44E82718",
               "system": "https://www.who-umc.org/phpid",
-              "display": "Flucelvax"
-            },
-            {
-              "code": "A03ku92",
-              "system": "http://www.whocc.no/atc",
-              "display": "Flucelvax"
+              "display": "Infliximab 100 mg powder for concentrate for solution for infusion"
             }
           ]
         },
         "form": {
           "coding": [
             {
-              "code": "10219999",
+              "code": "50049250",
               "system": "http://standardterms.edqm.eu",
-              "display": "suspension for injection in pre-filled syringe"
+              "display": "Powder for concentrate for solution for injection/infusion"
             }
-          ],
-          "text": "suspension for injection in pre-filled syringe"
+          ]
         },
         "ingredient": [
           {
             "itemCodeableConcept": {
               "coding": [
                 {
-                  "code": "TU2UN5CG9C",
+                  "code": "B72HH48FLU",
                   "system": "http://fdasis.nlm.nih.gov",
-                  "display": "INFLUENZA A VIRUS A/WISCONSIN/588/2019 (H1N1) WHOLE"
+                  "display": "INFLIXIMAB"
                 }
               ],
-              "text": "INFLUENZA A VIRUS A/WISCONSIN/588/2019 (H1N1) WHOLE"
+              "text": "INFLIXIMAB"
             },
             "strength": {
               "numerator": {
-                "value": 15,
-                "code": "mcg",
-                "system": "http://unitsofmeasure.org"
+                "value": 100,
+                "unit": "mg",
+                "system": "http://unitsofmeasure.org",
+                "code": "mg"
               },
               "denominator": {
                 "value": 1,
-                "code": "15054000",
-                "system": "http://standardterms.edqm.eu",
-                "unit": "suspension for injection in pre-filled syringe"
+                "unit": "Vial",
+                "system": "http://unitsofmeasure.org",
+                "code": "{vial}"
               }
             }
           }
@@ -576,26 +634,26 @@
       }
     },
     {
-      "fullUrl": "https://myserver.org/Medication/6f4151e9-91f6-4f1e-adc3-fb94dda79261",
+      "fullUrl": "https://myserver.org/Medication/de131e15-ed13-4b31-b38c-3204a84d99c2",
       "resource": {
         "resourceType": "Medication",
-        "id": "6f4151e9-91f6-4f1e-adc3-fb94dda79261",
+        "id": "de131e15-ed13-4b31-b38c-3204a84d99c2",
         "code": {
           "coding": [
             {
-              "code": "79963",
+              "code": "EU/1/97/049/001",
               "system": "https://spor.ema.europa.eu/pmswi",
-              "display": "HIPÉRICO ARKOPHARMA cápsulas duras"
+              "display": "Karvea 75 mg/ 1 tablet, Tablet"
             },
             {
-              "code": "0xbb82cd10ab2add752b2b9224931099j1",
+              "code": "0xF79CABF272B6A7EEF104DDDA44E82719",
               "system": "https://www.who-umc.org/phpid",
-              "display": "St. John's Wort (HIPÉRICO ARKOPHARMA) hard tablet"
+              "display": "Irbesartan, 75 mg/ 1 tablet, Tablet"
             },
             {
-              "code": "A03FA02",
+              "code": "C09DA04",
               "system": "http://www.whocc.no/atc",
-              "display": "HYPERICUM PERFORATUM WHOLE"
+              "display": "irbesartan and diuretics"
             }
           ]
         },
@@ -606,32 +664,32 @@
               "system": "http://standardterms.edqm.eu",
               "display": "Tablet"
             }
-          ],
-          "text": "Tablet"
+          ]
         },
         "ingredient": [
           {
             "itemCodeableConcept": {
               "coding": [
                 {
-                  "code": "XK4IUX8MNB",
+                  "code": "J0E2756Z7N",
                   "system": "http://fdasis.nlm.nih.gov",
-                  "display": "HYPERICUM PERFORATUM WHOLE"
+                  "display": "irbesartan"
                 }
               ],
-              "text": "HYPERICUM PERFORATUM WHOLE"
+              "text": "irbesartan"
             },
             "strength": {
               "numerator": {
-                "value": 175,
-                "code": "mg",
-                "system": "http://unitsofmeasure.org"
+                "value": 75,
+                "unit": "mg",
+                "system": "http://unitsofmeasure.org",
+                "code": "mg"
               },
               "denominator": {
                 "value": 1,
-                "code": "15054000",
-                "system": "http://standardterms.edqm.eu",
-                "unit": "Tablet"
+                "unit": "Tablet",
+                "system": "http://unitsofmeasure.org",
+                "code": "{tablet}"
               }
             }
           }
@@ -639,319 +697,336 @@
       }
     },
     {
-      "fullUrl": "https://myserver.org/Medication/6f4151e9-91f6-4f1e-adc3-fb94dda7785h",
+      "fullUrl": "https://myserver.org/Medication/9ac3356c-4ea4-4814-84c3-235484f2ef12",
       "resource": {
         "resourceType": "Medication",
-        "id": "6f4151e9-91f6-4f1e-adc3-fb94dda7785h",
+        "id": "9ac3356c-4ea4-4814-84c3-235484f2ef12",
         "code": {
           "coding": [
             {
-              "code": "68290",
+              "code": "EU/1/96/007/035",
               "system": "https://spor.ema.europa.eu/pmswi",
-              "display": "CALCIO/VITAMINA D3 ROVI 1000 mg/880 UI COMPRIMIDOS EFERVESCENTES"
+              "display": "Humalog Mix50 KwikPen 100 U/ml 5 pre-filled pen"
             },
             {
-              "code": "0xF79CABF272B6A7EEF104DDDA44E82716",
+              "code": "0xF79CABF272B6A7EEF104DDDA44E82717",
               "system": "https://www.who-umc.org/phpid",
-              "display": "Calcium Vitamin D"
+              "display": "Insulin Lispro 100 U/ml 5 pre-filled pen"
             }
           ]
         },
         "form": {
           "coding": [
             {
-              "code": "10222000",
+              "code": "11202000",
               "system": "http://standardterms.edqm.eu",
-              "display": "Effervescent tablet"
+              "display": "Suspension for injection"
             }
           ],
-          "text": "Effervescent tablet"
+          "text": "Suspension for injection"
         },
         "ingredient": [
           {
             "itemCodeableConcept": {
               "coding": [
                 {
-                  "code": "H0G9379FGK",
+                  "code": "GFX7QIS1II",
                   "system": "http://fdasis.nlm.nih.gov",
-                  "display": "Calcium carbonate"
+                  "display": "Insulin Lispro"
                 }
               ],
-              "text": "calcium carbonate"
+              "text": "Insulin Lispro"
             },
             "strength": {
               "numerator": {
-                "value": 1000,
-                "code": "mg",
-                "system": "http://unitsofmeasure.org"
+                "value": 100,
+                "unit": "U",
+                "system": "http://unitsofmeasure.org",
+                "code": "U"
               },
               "denominator": {
                 "value": 1,
-                "code": "15054000",
-                "system": "http://standardterms.edqm.eu",
-                "unit": "Tablet"
+                "unit": "ml",
+                "system": "http://unitsofmeasure.org",
+                "code": "ml"
               }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "https://myserver.org/Observation/e06e43a1-38d4-468f-8c35-f7f12da91062",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "e06e43a1-38d4-468f-8c35-f7f12da91062",
+        "status": "final",
+        "code": {
+          "coding": [
+            {
+              "code": "82810-3",
+              "system": "http://loinc.org",
+              "display": "Pregnancy status"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/c154158f-6a43-4ab7-8443-e7f4bf915dd2",
+          "display": "IPS 4 Gravitate"
+        },
+        "effectiveDateTime": "2020-01-10",
+        "valueCodeableConcept": {
+          "coding": [
+            {
+              "code": "LA15173-0",
+              "system": "http://loinc.org",
+              "display": "Pregnant"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "fullUrl": "https://myserver.org/Observation/bw",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "bw",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "code": "vital-signs",
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "code": "29463-7",
+              "system": "http://loinc.org",
+              "display": "Body weight"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/c154158f-6a43-4ab7-8443-e7f4bf915dd2",
+          "display": "IPS 4 Gravitate"
+        },
+        "effectiveDateTime": "2009-10-09",
+        "valueQuantity": {
+          "value": 70,
+          "code": "kg",
+          "system": "http://unitsofmeasure.org"
+        }
+      }
+    },
+    {
+      "fullUrl": "https://myserver.org/Observation/bh",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "bh",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "code": "vital-signs",
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "code": "8302-2",
+              "system": "http://loinc.org",
+              "display": "Body height"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/c154158f-6a43-4ab7-8443-e7f4bf915dd2",
+          "display": "IPS 4 Gravitate"
+        },
+        "effectiveDateTime": "2009-10-09",
+        "valueQuantity": {
+          "value": 170,
+          "code": "cm",
+          "system": "http://unitsofmeasure.org"
+        }
+      }
+    },
+    {
+      "fullUrl": "https://myserver.org/Observation/ips4-bp",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "ips4-bp",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "code": "vital-signs",
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category"
+              }
+            ]
+          }
+        ],
+        "code": {
+          "coding": [
+            {
+              "code": "85354-9",
+              "system": "http://loinc.org",
+              "display": "Blood pressure panel with all children optional"
+            }
+          ]
+        },
+        "subject": {
+          "reference": "Patient/c154158f-6a43-4ab7-8443-e7f4bf915dd2",
+          "display": "IPS 4 Gravitate"
+        },
+        "effectiveDateTime": "2009-10-09",
+        "component": [
+          {
+            "code": {
+              "coding": [
+                {
+                  "code": "8462-4",
+                  "system": "http://loinc.org",
+                  "display": "Diastolic blood pressure"
+                }
+              ]
+            },
+            "valueQuantity": {
+              "value": 80,
+              "code": "mm[Hg]",
+              "system": "http://unitsofmeasure.org"
             }
           },
           {
-            "itemCodeableConcept": {
+            "code": {
               "coding": [
                 {
-                  "code": "1C6V77QF41",
-                  "system": "http://fdasis.nlm.nih.gov",
-                  "display": "cholecalciferol"
+                  "code": "8480-6",
+                  "system": "http://loinc.org",
+                  "display": "Systolic blood pressure"
                 }
-              ],
-              "text": "cholecalciferol"
+              ]
             },
-            "strength": {
-              "numerator": {
-                "value": 880,
-                "code": "{UI}",
-                "system": "http://unitsofmeasure.org"
-              },
-              "denominator": {
-                "value": 1,
-                "code": "15054000",
-                "system": "http://standardterms.edqm.eu",
-                "unit": "Tablet"
-              }
+            "valueQuantity": {
+              "value": 120,
+              "code": "mm[Hg]",
+              "system": "http://unitsofmeasure.org"
             }
           }
         ]
       }
     },
     {
-      "fullUrl": "https://myserver.org/Medication/9d7be868-8264-4d94-ad04-ef04ecc92i99",
+      "fullUrl": "https://myserver.org/Observation/glucose",
       "resource": {
-        "resourceType": "Medication",
-        "id": "9d7be868-8264-4d94-ad04-ef04ecc92i99",
+        "resourceType": "Observation",
+        "id": "glucose",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "code": "vital-signs",
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category"
+              }
+            ]
+          }
+        ],
         "code": {
           "coding": [
             {
-              "code": "EU/1/18/1289/001",
-              "system": "https://spor.ema.europa.eu/pmswi",
-              "display": "Biktarvy 30 mg/120 mg/15 mg film-coated tablets"
-            },
-            {
-              "code": "0x073AF2E5B92AE19E8B67635AFFB3D9nq",
-              "system": "https://www.who-umc.org/phpid",
-              "display": "Biktarvy 30 mg/120 mg/15 mg film-coated tablets"
-            },
-            {
-              "code": "774856007",
-              "system": "http://snomed.info/sct",
-              "display": "Product containing only bictegravir and emtricitabine and tenofovir (medicinal product)"
-            },
-            {
-              "code": "J05AR20",
-              "system": "http://www.whocc.no/atc",
-              "display": "emtricitabine, tenofovir alafenamide and bictegravir"
+              "code": "15074-8",
+              "system": "http://loinc.org",
+              "display": "Glucose [Moles/volume] in Blood"
             }
           ]
         },
-        "form": {
-          "coding": [
-            {
-              "code": "10220000",
-              "system": "http://standardterms.edqm.eu",
-              "display": "Coated tablet"
-            }
-          ]
+        "subject": {
+          "reference": "Patient/c154158f-6a43-4ab7-8443-e7f4bf915dd2",
+          "display": "IPS 4 Gravitate"
         },
-        "ingredient": [
+        "effectiveDateTime": "2013-04-02T09:30:10+01:00",
+        "valueQuantity": {
+          "value": 6.3,
+          "code": "mmol/L",
+          "system": "http://unitsofmeasure.org",
+          "unit": "mmol/l"
+        },
+        "interpretation": [
           {
-            "itemCodeableConcept": {
-              "coding": [
-                {
-                  "code": "8GB79LOJ07",
-                  "system": "http://fdasis.nlm.nih.gov",
-                  "display": "bictegravir"
-                }
-              ],
-              "text": "bictegravir"
-            },
-            "strength": {
-              "numerator": {
-                "value": 30,
-                "code": "mg",
-                "system": "http://unitsofmeasure.org"
-              },
-              "denominator": {
-                "value": 1,
-                "code": "15054000",
-                "system": "http://standardterms.edqm.eu",
-                "unit": "Tablet"
+            "coding": [
+              {
+                "code": "H",
+                "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+                "display": "High"
               }
-            }
-          },
+            ]
+          }
+        ],
+        "referenceRange": [
           {
-            "itemCodeableConcept": {
-              "coding": [
-                {
-                  "code": "G70B4ETF4S",
-                  "system": "http://fdasis.nlm.nih.gov",
-                  "display": "emtricitabine"
-                }
-              ],
-              "text": "emtricitabine"
+            "low": {
+              "value": 3.1,
+              "code": "mmol/L",
+              "system": "http://unitsofmeasure.org",
+              "unit": "mmol/l"
             },
-            "strength": {
-              "numerator": {
-                "value": 120,
-                "code": "mg",
-                "system": "http://unitsofmeasure.org"
-              },
-              "denominator": {
-                "value": 1,
-                "code": "15054000",
-                "system": "http://standardterms.edqm.eu",
-                "unit": "Tablet"
-              }
-            }
-          },
-          {
-            "itemCodeableConcept": {
-              "coding": [
-                {
-                  "code": "EL9943AG5J",
-                  "system": "http://fdasis.nlm.nih.gov",
-                  "display": "tenofovir alafenamida"
-                }
-              ],
-              "text": "tenofovir alafenamida"
-            },
-            "strength": {
-              "numerator": {
-                "value": 15,
-                "code": "mg",
-                "system": "http://unitsofmeasure.org"
-              },
-              "denominator": {
-                "value": 1,
-                "code": "15054000",
-                "system": "http://standardterms.edqm.eu",
-                "unit": "Tablet"
-              }
+            "high": {
+              "value": 6.2,
+              "code": "mmol/L",
+              "system": "http://unitsofmeasure.org",
+              "unit": "mmol/l"
             }
           }
         ]
       }
     },
     {
-      "fullUrl": "https://myserver.org/Medication/6f4151e9-91f6-4f1e-adc3-fb94dda78356",
+      "fullUrl": "https://myserver.org/Observation/egfr",
       "resource": {
-        "resourceType": "Medication",
-        "id": "6f4151e9-91f6-4f1e-adc3-fb94dda78356",
+        "resourceType": "Observation",
+        "id": "egfr",
+        "status": "final",
+        "category": [
+          {
+            "coding": [
+              {
+                "code": "vital-signs",
+                "system": "http://terminology.hl7.org/CodeSystem/observation-category"
+              }
+            ]
+          }
+        ],
         "code": {
           "coding": [
             {
-              "code": "39.955",
-              "system": "https://spor.ema.europa.eu/pmswi",
-              "display": "Tegretol (Carbamazepine) 200 mg tablets"
-            },
-            {
-              "code": "0x6e5dd079852edc5c3b8efce075c80a2e",
-              "system": "https://www.who-umc.org/phpid",
-              "display": "Carbamazepine 200 mg tablets"
+              "code": "48643-1",
+              "system": "http://loinc.org",
+              "display": "Glomerular filtration rate [Volume Rate/Area] in Serum, Plasma or Blood by Creatinine-based formula (MDRD)/1.73 sq M among black population"
             }
           ]
         },
-        "form": {
-          "coding": [
-            {
-              "code": "10219000",
-              "system": "http://standardterms.edqm.eu",
-              "display": "Tablet"
-            }
-          ],
-          "text": "Tablet"
+        "subject": {
+          "reference": "Patient/c154158f-6a43-4ab7-8443-e7f4bf915dd2",
+          "display": "IPS 4 Gravitate"
         },
-        "ingredient": [
-          {
-            "itemCodeableConcept": {
-              "coding": [
-                {
-                  "code": "33CM23913M",
-                  "system": "http://fdasis.nlm.nih.gov",
-                  "display": "CARBAMAZEPINE"
-                }
-              ],
-              "text": "CARBAMAZEPINE"
-            },
-            "strength": {
-              "numerator": {
-                "value": 200,
-                "code": "mg",
-                "system": "http://unitsofmeasure.org"
-              },
-              "denominator": {
-                "value": 1,
-                "code": "15054000",
-                "system": "http://standardterms.edqm.eu",
-                "unit": "Tablet"
-              }
-            }
-          }
-        ]
-      }
-    },
-    {
-      "fullUrl": "https://myserver.org/Medication/6f4151e9-91f6-4f1e-adc3-fb94dda78333",
-      "resource": {
-        "resourceType": "Medication",
-        "id": "6f4151e9-91f6-4f1e-adc3-fb94dda78333",
-        "code": {
-          "coding": [
-            {
-              "code": "EU/1/98/071/004",
-              "system": "https://spor.ema.europa.eu/pmswi",
-              "display": "Xenical (Orlistat) 60 mg capsule"
-            },
-            {
-              "code": "0xc805ef896d1c2f5f17f84f34c909a9db",
-              "system": "https://www.who-umc.org/phpid",
-              "display": "Xenical (Orlistat) 60 mg capsule"
-            }
-          ]
-        },
-        "form": {
-          "coding": [
-            {
-              "code": "10210000",
-              "system": "http://standardterms.edqm.eu",
-              "display": "Capsule, hard"
-            }
-          ],
-          "text": "Capsule, hard"
-        },
-        "ingredient": [
-          {
-            "itemCodeableConcept": {
-              "coding": [
-                {
-                  "code": "95M8R751W8",
-                  "system": "http://fdasis.nlm.nih.gov",
-                  "display": "ORLISTAT"
-                }
-              ],
-              "text": "ORLISTAT"
-            },
-            "strength": {
-              "numerator": {
-                "value": 60,
-                "code": "mg",
-                "system": "http://unitsofmeasure.org"
-              },
-              "denominator": {
-                "value": 1,
-                "code": "15054000",
-                "system": "http://standardterms.edqm.eu",
-                "unit": "Tablet"
-              }
-            }
-          }
-        ]
+        "effectiveDateTime": "2013-04-02T09:30:10+01:00",
+        "valueQuantity": {
+          "value": 29,
+          "code": "mL/min/1.73m2",
+          "system": "http://unitsofmeasure.org",
+          "unit": "mmol/l"
+        }
       }
     }
   ]
