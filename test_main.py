@@ -87,7 +87,9 @@ def test_all_preprocess_data(bundles, patient_ids, base_url):
 
     warnings = eval(bundleresp.headers.get("gh-focusing-warnings", "{}"))
     value = evaluate_result(bundleresp.status_code, warnings)
-
+    if value > 0:
+        print(f"Warnings found: {warnings}")
+        print(f"Status code: {bundleresp.status_code}")
     # ✅ Core assertion
     assert value in [0]
 

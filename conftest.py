@@ -157,21 +157,31 @@ ENHANCED_WHITE_LIST = [
 
 
 # Reusable evaluation logic (from log_result)
+def _has_nonempty_warnings(value):
+    if not value:
+        return False
+    if isinstance(value, dict):
+        return any(_has_nonempty_warnings(v) for v in value.values())
+    if isinstance(value, (list, tuple, set)):
+        return any(_has_nonempty_warnings(v) for v in value)
+    return True
+
+
 def evaluate_result(status_code, warnings):
-    if status_code == 200 and not warnings:
+    if status_code == 200 and not _has_nonempty_warnings(warnings):
         return 0
     elif status_code != 200:
         return 1
     elif (
         status_code == 200
         and "preprocessingWarnings" in warnings
-        and warnings["preprocessingWarnings"]
+        and _has_nonempty_warnings(warnings["preprocessingWarnings"])
     ):
         return 2
     elif (
         status_code == 200
         and "lensesWarnings" in warnings
-        and warnings["lensesWarnings"]
+        and _has_nonempty_warnings(warnings["lensesWarnings"])
     ):
         return 3
     else:
